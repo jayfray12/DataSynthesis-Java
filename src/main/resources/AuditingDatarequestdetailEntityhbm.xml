@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.AuditingDatarequestdetailEntity" table="auditing_datarequestdetail"
+           schema="datasynthesis">
+        <id name="dataRequestDetailId">
+            <column name="DataRequestDetailID" sql-type="bigint"/>
+        </id>
+        <property name="dataRequestId">
+            <column name="DataRequestID" sql-type="bigint" not-null="true"/>
+        </property>
+        <property name="dataAttributeId">
+            <column name="DataAttributeID" sql-type="smallint" not-null="true"/>
+        </property>
+        <property name="recCount">
+            <column name="RecCount" sql-type="bigint" not-null="true"/>
+        </property>
+        <property name="recordFormatDetails">
+            <column name="RecordFormatDetails" sql-type="varchar(75)" length="75" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <many-to-one name="auditingDatarequestByDataRequestId"
+                     class="com.datasynthesis.hibernatemappings.AuditingDatarequestEntity">
+            <column name="DataRequestID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="platformDataattributesByDataAttributeId"
+                     class="com.datasynthesis.hibernatemappings.PlatformDataattributesEntity">
+            <column name="DataAttributeID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
+            <column name="StatusID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

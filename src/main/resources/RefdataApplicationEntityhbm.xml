@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.RefdataApplicationEntity" table="refdata_application"
+           schema="datasynthesis">
+        <id name="applicationId">
+            <column name="ApplicationID" sql-type="bigint"/>
+        </id>
+        <property name="applicationCustomCode">
+            <column name="ApplicationCustomCode" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="applicationDesc">
+            <column name="ApplicationDesc" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="createdUser">
+            <column name="CreatedUser" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <property name="appGuid">
+            <column name="AppGUID" sql-type="char(38)" length="38" not-null="true"/>
+        </property>
+        <property name="vendorId">
+            <column name="VendorID" sql-type="int" not-null="true"/>
+        </property>
+        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
+            <column name="StatusID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="refdataVendorByVendorId" class="com.datasynthesis.hibernatemappings.RefdataVendorEntity">
+            <column name="VendorID" not-null="true"/>
+        </many-to-one>
+        <set name="refdataCodesetvaluesByApplicationId" inverse="true">
+            <key>
+                <column name="ApplicationID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.RefdataCodesetvaluesEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

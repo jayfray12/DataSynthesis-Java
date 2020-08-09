@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.RefdataCountriesEntity" table="refdata_countries"
+           schema="datasynthesis">
+        <id name="countryId">
+            <column name="CountryID" sql-type="smallint"/>
+        </id>
+        <property name="idd">
+            <column name="IDD" sql-type="varchar(5)" length="5" not-null="true"/>
+        </property>
+        <property name="countryName">
+            <column name="CountryName" sql-type="varchar(59)" length="59" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
+            <column name="StatusID" not-null="true"/>
+        </many-to-one>
+        <set name="dataexistingAreacodeintlsByCountryId" inverse="true">
+            <key>
+                <column name="CountryID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.DataexistingAreacodeintlEntity"/>
+        </set>
+        <set name="dataexistingZipcodeintlsByCountryId" inverse="true">
+            <key>
+                <column name="Country" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.DataexistingZipcodeintlEntity"/>
+        </set>
+        <set name="datageneratedPhonenumbersintlsByCountryId" inverse="true">
+            <key>
+                <column name="CountryId" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore"
+                         class="com.datasynthesis.hibernatemappings.DatageneratedPhonenumbersintlEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

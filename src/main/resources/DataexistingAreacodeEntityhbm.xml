@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.DataexistingAreacodeEntity" table="dataexisting_areacode"
+           schema="datasynthesis">
+        <id name="areaCodeId">
+            <column name="AreaCodeID" sql-type="bigint"/>
+        </id>
+        <property name="areaCodeValue">
+            <column name="AreaCodeValue" sql-type="varchar(3)" length="3"/>
+        </property>
+        <property name="timeZone">
+            <column name="TimeZone" sql-type="varchar(3)" length="3" not-null="true"/>
+        </property>
+        <property name="stateCode">
+            <column name="StateCode" sql-type="varchar(2)" length="2" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <property name="createdUser">
+            <column name="CreatedUser" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="registeredApp">
+            <column name="RegisteredApp" sql-type="char(38)" length="38" not-null="true"/>
+        </property>
+        <many-to-one name="refdataTimezonesByTimeZone"
+                     class="com.datasynthesis.hibernatemappings.RefdataTimezonesEntity">
+            <column name="TimeZone" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="refdataUsstatesByStateCode"
+                     class="com.datasynthesis.hibernatemappings.RefdataUsstatesEntity">
+            <column name="StateCode" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
+            <column name="StatusID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

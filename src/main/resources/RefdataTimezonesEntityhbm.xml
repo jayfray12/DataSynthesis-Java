@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.RefdataTimezonesEntity" table="refdata_timezones"
+           schema="datasynthesis">
+        <id name="timeZoneValue">
+            <column name="TimeZoneValue" sql-type="varchar(3)" length="3"/>
+        </id>
+        <property name="timeZoneDesc">
+            <column name="TimeZoneDesc" sql-type="varchar(25)" length="25" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
+            <column name="StatusID" not-null="true"/>
+        </many-to-one>
+        <set name="dataexistingAreacodesByTimeZoneValue" inverse="true">
+            <key>
+                <column name="TimeZone" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.DataexistingAreacodeEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

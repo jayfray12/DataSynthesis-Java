@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.DatamodelDatatablesEntity" table="datamodel_datatables"
+           schema="datasynthesis">
+        <id name="tableName">
+            <column name="TableName" sql-type="varchar(64)" length="64"/>
+        </id>
+        <property name="tableInformation">
+            <column name="TableInformation" sql-type="varchar(249)" length="249" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.datasynthesis.hibernatemappings.RefdataSensitivityflagEntity" table="refdata_sensitivityflag"
+           schema="datasynthesis">
+        <id name="sensitiveFlagId">
+            <column name="SensitiveFlagID" sql-type="smallint"/>
+        </id>
+        <property name="sensitiveFlagDesc">
+            <column name="SensitiveFlagDesc" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="createdDate">
+            <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="statusId">
+            <column name="StatusID" sql-type="smallint" not-null="true"/>
+        </property>
+        <set name="platformDataattributesBySensitiveFlagId" inverse="true">
+            <key>
+                <column name="SensitivityFlagID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.PlatformDataattributesEntity"/>
+        </set>
+        <set name="platformDatastructurestodataattributesBySensitiveFlagId" inverse="true">
+            <key>
+                <column name="SensitivityFlagID" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore"
+                         class="com.datasynthesis.hibernatemappings.PlatformDatastructurestodataattributesEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>
