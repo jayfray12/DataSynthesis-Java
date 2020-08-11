@@ -40,15 +40,6 @@ public class RefdataStatusEntity {
     private Collection<MapDelimiteddatamapdetailtovendordatamodelEntity> mapDelimiteddatamapdetailtovendordatamodelsByStatusId;
     private Collection<MapDelimiteddatamappingdetailEntity> mapDelimiteddatamappingdetailsByStatusId;
     private Collection<MapDelimiteddatamappingheaderEntity> mapDelimiteddatamappingheadersByStatusId;
-    private Collection<MapHcinterfacedatamapdetailEntity> mapHcinterfacedatamapdetailsByStatusId;
-    private Collection<MapHcinterfacedatamapdetailtocodesetsEntity> mapHcinterfacedatamapdetailtocodesetsByStatusId;
-    private Collection<MapHcinterfacedatamapdetailtodataattributesEntity> mapHcinterfacedatamapdetailtodataattributesByStatusId;
-    private Collection<MapHcinterfacedatamapdetailtovendordatamodelEntity> mapHcinterfacedatamapdetailtovendordatamodelsByStatusId;
-    private Collection<MapHcinterfacedatamapheaderEntity> mapHcinterfacedatamapheadersByStatusId;
-    private Collection<MapVendordatamappingdetailEntity> mapVendordatamappingdetailsByStatusId;
-    private Collection<MapVendordatamappingdetailtocodesetsEntity> mapVendordatamappingdetailtocodesetsByStatusId;
-    private Collection<MapVendordatamappingdetailtodataattributesEntity> mapVendordatamappingdetailtodataattributesByStatusId;
-    private Collection<MapVendordatamappingheaderEntity> mapVendordatamappingheadersByStatusId;
     private Collection<PlatformAppsettingEntity> platformAppsettingsByStatusId;
     private Collection<PlatformDataattributesEntity> platformDataattributesByStatusId;
     private Collection<PlatformDatagenconfigEntity> platformDatagenconfigsByStatusId;
@@ -380,78 +371,6 @@ public class RefdataStatusEntity {
 
     public void setMapDelimiteddatamappingheadersByStatusId(Collection<MapDelimiteddatamappingheaderEntity> mapDelimiteddatamappingheadersByStatusId) {
         this.mapDelimiteddatamappingheadersByStatusId = mapDelimiteddatamappingheadersByStatusId;
-    }
-
-    public Collection<MapHcinterfacedatamapdetailEntity> getMapHcinterfacedatamapdetailsByStatusId() {
-        return mapHcinterfacedatamapdetailsByStatusId;
-    }
-
-    public void setMapHcinterfacedatamapdetailsByStatusId(Collection<MapHcinterfacedatamapdetailEntity> mapHcinterfacedatamapdetailsByStatusId) {
-        this.mapHcinterfacedatamapdetailsByStatusId = mapHcinterfacedatamapdetailsByStatusId;
-    }
-
-    public Collection<MapHcinterfacedatamapdetailtocodesetsEntity> getMapHcinterfacedatamapdetailtocodesetsByStatusId() {
-        return mapHcinterfacedatamapdetailtocodesetsByStatusId;
-    }
-
-    public void setMapHcinterfacedatamapdetailtocodesetsByStatusId(Collection<MapHcinterfacedatamapdetailtocodesetsEntity> mapHcinterfacedatamapdetailtocodesetsByStatusId) {
-        this.mapHcinterfacedatamapdetailtocodesetsByStatusId = mapHcinterfacedatamapdetailtocodesetsByStatusId;
-    }
-
-    public Collection<MapHcinterfacedatamapdetailtodataattributesEntity> getMapHcinterfacedatamapdetailtodataattributesByStatusId() {
-        return mapHcinterfacedatamapdetailtodataattributesByStatusId;
-    }
-
-    public void setMapHcinterfacedatamapdetailtodataattributesByStatusId(Collection<MapHcinterfacedatamapdetailtodataattributesEntity> mapHcinterfacedatamapdetailtodataattributesByStatusId) {
-        this.mapHcinterfacedatamapdetailtodataattributesByStatusId = mapHcinterfacedatamapdetailtodataattributesByStatusId;
-    }
-
-    public Collection<MapHcinterfacedatamapdetailtovendordatamodelEntity> getMapHcinterfacedatamapdetailtovendordatamodelsByStatusId() {
-        return mapHcinterfacedatamapdetailtovendordatamodelsByStatusId;
-    }
-
-    public void setMapHcinterfacedatamapdetailtovendordatamodelsByStatusId(Collection<MapHcinterfacedatamapdetailtovendordatamodelEntity> mapHcinterfacedatamapdetailtovendordatamodelsByStatusId) {
-        this.mapHcinterfacedatamapdetailtovendordatamodelsByStatusId = mapHcinterfacedatamapdetailtovendordatamodelsByStatusId;
-    }
-
-    public Collection<MapHcinterfacedatamapheaderEntity> getMapHcinterfacedatamapheadersByStatusId() {
-        return mapHcinterfacedatamapheadersByStatusId;
-    }
-
-    public void setMapHcinterfacedatamapheadersByStatusId(Collection<MapHcinterfacedatamapheaderEntity> mapHcinterfacedatamapheadersByStatusId) {
-        this.mapHcinterfacedatamapheadersByStatusId = mapHcinterfacedatamapheadersByStatusId;
-    }
-
-    public Collection<MapVendordatamappingdetailEntity> getMapVendordatamappingdetailsByStatusId() {
-        return mapVendordatamappingdetailsByStatusId;
-    }
-
-    public void setMapVendordatamappingdetailsByStatusId(Collection<MapVendordatamappingdetailEntity> mapVendordatamappingdetailsByStatusId) {
-        this.mapVendordatamappingdetailsByStatusId = mapVendordatamappingdetailsByStatusId;
-    }
-
-    public Collection<MapVendordatamappingdetailtocodesetsEntity> getMapVendordatamappingdetailtocodesetsByStatusId() {
-        return mapVendordatamappingdetailtocodesetsByStatusId;
-    }
-
-    public void setMapVendordatamappingdetailtocodesetsByStatusId(Collection<MapVendordatamappingdetailtocodesetsEntity> mapVendordatamappingdetailtocodesetsByStatusId) {
-        this.mapVendordatamappingdetailtocodesetsByStatusId = mapVendordatamappingdetailtocodesetsByStatusId;
-    }
-
-    public Collection<MapVendordatamappingdetailtodataattributesEntity> getMapVendordatamappingdetailtodataattributesByStatusId() {
-        return mapVendordatamappingdetailtodataattributesByStatusId;
-    }
-
-    public void setMapVendordatamappingdetailtodataattributesByStatusId(Collection<MapVendordatamappingdetailtodataattributesEntity> mapVendordatamappingdetailtodataattributesByStatusId) {
-        this.mapVendordatamappingdetailtodataattributesByStatusId = mapVendordatamappingdetailtodataattributesByStatusId;
-    }
-
-    public Collection<MapVendordatamappingheaderEntity> getMapVendordatamappingheadersByStatusId() {
-        return mapVendordatamappingheadersByStatusId;
-    }
-
-    public void setMapVendordatamappingheadersByStatusId(Collection<MapVendordatamappingheaderEntity> mapVendordatamappingheadersByStatusId) {
-        this.mapVendordatamappingheadersByStatusId = mapVendordatamappingheadersByStatusId;
     }
 
     public Collection<PlatformAppsettingEntity> getPlatformAppsettingsByStatusId() {

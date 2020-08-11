@@ -6,14 +6,12 @@
     <session-factory>
         <!--<property name="connection.url"/>-->
         <!--<property name="connection.driver_class"/>-->
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
-
+        <property name="connection.username">root</property>
+        <property name="connection.password">Developer123</property>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/datasynthesis?serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://192.168.1.43:3306/datasynthesis?serverTimezone=UTC</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">10</property>
         <!-- Select our SQL dialect -->
@@ -61,15 +59,6 @@
         <mapping resource="MapDelimiteddatamapdetailtovendordatamodelEntityhbm.xml"/>
         <mapping resource="MapDelimiteddatamappingdetailEntityhbm.xml"/>
         <mapping resource="MapDelimiteddatamappingheaderEntityhbm.xml"/>
-        <mapping resource="MapHcinterfacedatamapdetailEntityhbm.xml"/>
-        <mapping resource="MapHcinterfacedatamapdetailtocodesetsEntityhbm.xml"/>
-        <mapping resource="MapHcinterfacedatamapdetailtodataattributesEntityhbm.xml"/>
-        <mapping resource="MapHcinterfacedatamapdetailtovendordatamodelEntityhbm.xml"/>
-        <mapping resource="MapHcinterfacedatamapheaderEntityhbm.xml"/>
-        <mapping resource="MapVendordatamappingdetailEntityhbm.xml"/>
-        <mapping resource="MapVendordatamappingdetailtocodesetsEntityhbm.xml"/>
-        <mapping resource="MapVendordatamappingdetailtodataattributesEntityhbm.xml"/>
-        <mapping resource="MapVendordatamappingheaderEntityhbm.xml"/>
         <mapping resource="PlatformAppsettingEntityhbm.xml"/>
         <mapping resource="PlatformDataattributesEntityhbm.xml"/>
         <mapping resource="PlatformDatagenconfigEntityhbm.xml"/>

@@ -222,69 +222,6 @@
             <one-to-many not-found="ignore"
                          class="com.datasynthesis.hibernatemappings.MapDelimiteddatamappingheaderEntity"/>
         </set>
-        <set name="mapHcinterfacedatamapdetailsByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapHcinterfacedatamapdetailEntity"/>
-        </set>
-        <set name="mapHcinterfacedatamapdetailtocodesetsByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapHcinterfacedatamapdetailtocodesetsEntity"/>
-        </set>
-        <set name="mapHcinterfacedatamapdetailtodataattributesByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapHcinterfacedatamapdetailtodataattributesEntity"/>
-        </set>
-        <set name="mapHcinterfacedatamapdetailtovendordatamodelsByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapHcinterfacedatamapdetailtovendordatamodelEntity"/>
-        </set>
-        <set name="mapHcinterfacedatamapheadersByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapHcinterfacedatamapheaderEntity"/>
-        </set>
-        <set name="mapVendordatamappingdetailsByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapVendordatamappingdetailEntity"/>
-        </set>
-        <set name="mapVendordatamappingdetailtocodesetsByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapVendordatamappingdetailtocodesetsEntity"/>
-        </set>
-        <set name="mapVendordatamappingdetailtodataattributesByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapVendordatamappingdetailtodataattributesEntity"/>
-        </set>
-        <set name="mapVendordatamappingheadersByStatusId" inverse="true">
-            <key>
-                <column name="StatusID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.MapVendordatamappingheaderEntity"/>
-        </set>
         <set name="platformAppsettingsByStatusId" inverse="true">
             <key>
                 <column name="StatusID" not-null="true"/>
