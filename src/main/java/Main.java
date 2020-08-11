@@ -5,6 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import java.util.List;
+// Added for MySQL JDBC Connecivity
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.persistence.metamodel.EntityType;
 import java.util.Map;
@@ -13,13 +17,12 @@ import com.datasynthesis.ormmapping.PlatformDatagenconfigEntity;
 import com.datasynthesis.hibernatemappings.*;
 
 public class Main {
-    private static final SessionFactory ourSessionFactory;
-
+    //private static final SessionFactory ourSessionFactory;
     /*
      *      This executes when main is started
      */
     static {
-        try
+      /*  try
         {
             Configuration configuration = new Configuration();
             configuration.configure();
@@ -28,24 +31,26 @@ public class Main {
         catch (Throwable ex)
         {
             throw new ExceptionInInitializerError(ex);
-        }
+        }*/
     }
 
     /*
      *      Invoked in Main
-     */
+
     public static Session getSession() throws HibernateException {
         return ourSessionFactory.openSession();
     }
+    */
 
     /*
      *      Main Method
      */
     public static void main(final String[] args) throws Exception {
-        Session session = getSession();
+        //Session session = getSession();
         try
         {
             /*
+            *   This is a complete code example for Hibernate
             final Metamodel metamodel = session.getSessionFactory().getMetamodel();
             for (EntityType<?> entityType : metamodel.getEntities())
             {
@@ -57,8 +62,6 @@ public class Main {
                     System.out.println("  " + o);
                 }
             }
-            */
-
             System.out.println("Loading Hibernate Configuration ...");
             Configuration configuration = new Configuration();
             configuration.configure("./resources/hibernate.cfg.xml");
@@ -69,15 +72,24 @@ public class Main {
             query.setParameter("code",1);
             System.out.println("Process Results ...");
             List list = query.list();
+            */
+            Connection _conn = null;
+            System.out.println("Loading Database Connectivity Configuration ...");
+            _conn = DriverManager.getConnection("jdbc:mysql://localhost/datasynthesis" +
+                            "user=datasynthesis&password=datasynthesis");
+            System.out.println("Connected to MySQL Database ...");
 
-        }
-        catch (Exception e)
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (Exception e)
         {
             e.printStackTrace();
-        }
-        finally
+        } finally
         {
-            session.close();
+            //session.close();
         }
     }
 }
