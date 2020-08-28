@@ -54,19 +54,6 @@ public class Main {
     public static void main(final String[] args) throws Exception, SQLException {
         Session session = getSession();
 
-     /*   final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            System.out.println("Instatitiating SessionFactory ...");
-            SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            System.out.println("Opening Session Factory ...");
-            Session session = sessionFactory.openSession();
-        } catch (Exception ex) {
-            System.out.println("Error Detail:  ");
-            ex.printStackTrace();
-            StandardServiceRegistryBuilder.destroy(registry);
-        }*/
         try
         {
             /*
@@ -89,22 +76,24 @@ public class Main {
             System.out.println("Getting Session ...");
             Session s1 = session.getSession().getSessionFactory().openSession();
             System.out.println("Querying Data ...");
-            //Query query = s1.createQuery("from PlatformDatagenconfigEntity where statusId= :code");
-            //query.setParameter("code",1);
-            //System.out.println("Process Results ...");
-            //List list = query.list();
+            Query query = s1.createQuery("from PlatformDatagenconfigEntity where statusId= :code");
+            query.setParameter("code",1);
+            System.out.println("Process Results ...");
+            List list = query.list();
 
-            /*
+            /* Direct Non Hibernate Connection
             Connection _conn = null;
             System.out.println("Loading Database Connectivity Configuration ...");
             _conn = DriverManager.getConnection("jdbc:mysql://localhost/datasynthesis" +
                             "user=datasynthesis&password=datasynthesis");
             System.out.println("Connected to MySQL Database ...");
             */
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
-        } finally
+        }
+        finally
         {
             //session.close();
         }
