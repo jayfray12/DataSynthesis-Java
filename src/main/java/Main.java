@@ -6,20 +6,13 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.Session;
-
 import org.hibernate.query.Query;
 import org.hibernate.cfg.Configuration;
 import java.util.List;
 // Added for additional support
 import javax.persistence.metamodel.EntityType;
 import java.util.Map;
-// Added for MySQL JDBC Connecivity
-//import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.sql.SQLException;
-// ORM Mappings
-//import com.datasynthesis.ormmapping.PlatformDatagenconfigEntity;
-//import com.datasynthesis.hibernatemappings.*;
 
 
 public class Main {
@@ -72,12 +65,13 @@ public class Main {
             */
             System.out.println("Loading Hibernate Configuration ...");
             Configuration configuration = new Configuration();
-            configuration.configure("./resources/hibernate.cfg.xml");
+            configuration.configure("hibernate.cfg.xml");
             System.out.println("Getting Session ...");
             Session s1 = session.getSession().getSessionFactory().openSession();
             System.out.println("Querying Data ...");
-            Query query = s1.createQuery("from PlatformDatagenconfigEntity where statusId= :code");
-            query.setParameter("code",1);
+            //Query query = s1.createQuery("from PlatformDatagenconfigEntity where statusId= :code");
+            Query query = s1.createQuery("from RefdataStatusEntity");
+            //query.setParameter("code",1);
             System.out.println("Process Results ...");
             List list = query.list();
 
