@@ -1,18 +1,19 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "platform_rulesets", schema = "datasynthesis", catalog = "")
 public class PlatformRulesetsEntity {
     private long ruleId;
     private String ruleName;
     private String createdUser;
     private Timestamp createdDate;
-    private Short statusId;
     private Timestamp expirationDate;
-    private RefdataStatusEntity refdataStatusByStatusId;
-    private Collection<PlatformRulesetsdefinitionsEntity> platformRulesetsdefinitionsByRuleId;
 
+    @Id
+    @Column(name = "RuleID", nullable = false)
     public long getRuleId() {
         return ruleId;
     }
@@ -21,6 +22,8 @@ public class PlatformRulesetsEntity {
         this.ruleId = ruleId;
     }
 
+    @Basic
+    @Column(name = "RuleName", nullable = true, length = 65)
     public String getRuleName() {
         return ruleName;
     }
@@ -29,6 +32,8 @@ public class PlatformRulesetsEntity {
         this.ruleName = ruleName;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -37,6 +42,8 @@ public class PlatformRulesetsEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -45,14 +52,8 @@ public class PlatformRulesetsEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "ExpirationDate", nullable = true)
     public Timestamp getExpirationDate() {
         return expirationDate;
     }
@@ -72,7 +73,6 @@ public class PlatformRulesetsEntity {
         if (ruleName != null ? !ruleName.equals(that.ruleName) : that.ruleName != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (expirationDate != null ? !expirationDate.equals(that.expirationDate) : that.expirationDate != null)
             return false;
 
@@ -85,24 +85,7 @@ public class PlatformRulesetsEntity {
         result = 31 * result + (ruleName != null ? ruleName.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (expirationDate != null ? expirationDate.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
-    }
-
-    public Collection<PlatformRulesetsdefinitionsEntity> getPlatformRulesetsdefinitionsByRuleId() {
-        return platformRulesetsdefinitionsByRuleId;
-    }
-
-    public void setPlatformRulesetsdefinitionsByRuleId(Collection<PlatformRulesetsdefinitionsEntity> platformRulesetsdefinitionsByRuleId) {
-        this.platformRulesetsdefinitionsByRuleId = platformRulesetsdefinitionsByRuleId;
     }
 }

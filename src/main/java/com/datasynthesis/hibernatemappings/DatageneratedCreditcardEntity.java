@@ -1,17 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datagenerated_creditcard", schema = "datasynthesis", catalog = "")
 public class DatageneratedCreditcardEntity {
     private long creditCardId;
     private String creditCardNumber;
     private String creditCardName;
     private Timestamp createdDate;
-    private Short statusId;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "CreditCardID", nullable = false)
     public long getCreditCardId() {
         return creditCardId;
     }
@@ -20,6 +23,8 @@ public class DatageneratedCreditcardEntity {
         this.creditCardId = creditCardId;
     }
 
+    @Basic
+    @Column(name = "CreditCardNumber", nullable = true, length = 20)
     public String getCreditCardNumber() {
         return creditCardNumber;
     }
@@ -28,6 +33,8 @@ public class DatageneratedCreditcardEntity {
         this.creditCardNumber = creditCardNumber;
     }
 
+    @Basic
+    @Column(name = "CreditCardName", nullable = true, length = 10)
     public String getCreditCardName() {
         return creditCardName;
     }
@@ -36,6 +43,8 @@ public class DatageneratedCreditcardEntity {
         this.creditCardName = creditCardName;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -44,14 +53,8 @@ public class DatageneratedCreditcardEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -60,6 +63,8 @@ public class DatageneratedCreditcardEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -81,7 +86,6 @@ public class DatageneratedCreditcardEntity {
         if (creditCardName != null ? !creditCardName.equals(that.creditCardName) : that.creditCardName != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
@@ -95,17 +99,8 @@ public class DatageneratedCreditcardEntity {
         result = 31 * result + (creditCardNumber != null ? creditCardNumber.hashCode() : 0);
         result = 31 * result + (creditCardName != null ? creditCardName.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

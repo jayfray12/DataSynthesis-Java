@@ -18,8 +18,8 @@ import java.util.Map;
 //import java.sql.DriverManager;
 import java.sql.SQLException;
 // ORM Mappings
-import com.datasynthesis.ormmapping.PlatformDatagenconfigEntity;
-import com.datasynthesis.hibernatemappings.*;
+//import com.datasynthesis.ormmapping.PlatformDatagenconfigEntity;
+//import com.datasynthesis.hibernatemappings.*;
 
 
 public class Main {
@@ -81,13 +81,7 @@ public class Main {
             System.out.println("Process Results ...");
             List list = query.list();
 
-            /* Direct Non Hibernate Connection
-            Connection _conn = null;
-            System.out.println("Loading Database Connectivity Configuration ...");
-            _conn = DriverManager.getConnection("jdbc:mysql://localhost/datasynthesis" +
-                            "user=datasynthesis&password=datasynthesis");
-            System.out.println("Connected to MySQL Database ...");
-            */
+
         }
         catch (Exception e)
         {

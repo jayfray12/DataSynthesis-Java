@@ -12,9 +12,6 @@
         <property name="lastName">
             <column name="LastName" sql-type="varchar(69)" length="69" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
@@ -24,8 +21,5 @@
         <property name="registeredApp">
             <column name="RegisteredApp" sql-type="char(38)" length="38" not-null="true"/>
         </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

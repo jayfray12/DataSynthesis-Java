@@ -1,16 +1,17 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "refdata_addressformattype", schema = "datasynthesis", catalog = "")
 public class RefdataAddressformattypeEntity {
     private short addressFormatTypeId;
     private String addressFormatTypeDesc;
     private Timestamp createdDate;
-    private Short statusId;
-    private Collection<DatageneratedAddressesEntity> datageneratedAddressesByAddressFormatTypeId;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "AddressFormatTypeID", nullable = false)
     public short getAddressFormatTypeId() {
         return addressFormatTypeId;
     }
@@ -19,6 +20,8 @@ public class RefdataAddressformattypeEntity {
         this.addressFormatTypeId = addressFormatTypeId;
     }
 
+    @Basic
+    @Column(name = "AddressFormatTypeDesc", nullable = true, length = 35)
     public String getAddressFormatTypeDesc() {
         return addressFormatTypeDesc;
     }
@@ -27,20 +30,14 @@ public class RefdataAddressformattypeEntity {
         this.addressFormatTypeDesc = addressFormatTypeDesc;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
     }
 
     @Override
@@ -54,7 +51,6 @@ public class RefdataAddressformattypeEntity {
         if (addressFormatTypeDesc != null ? !addressFormatTypeDesc.equals(that.addressFormatTypeDesc) : that.addressFormatTypeDesc != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
 
         return true;
     }
@@ -64,23 +60,6 @@ public class RefdataAddressformattypeEntity {
         int result = (int) addressFormatTypeId;
         result = 31 * result + (addressFormatTypeDesc != null ? addressFormatTypeDesc.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         return result;
-    }
-
-    public Collection<DatageneratedAddressesEntity> getDatageneratedAddressesByAddressFormatTypeId() {
-        return datageneratedAddressesByAddressFormatTypeId;
-    }
-
-    public void setDatageneratedAddressesByAddressFormatTypeId(Collection<DatageneratedAddressesEntity> datageneratedAddressesByAddressFormatTypeId) {
-        this.datageneratedAddressesByAddressFormatTypeId = datageneratedAddressesByAddressFormatTypeId;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

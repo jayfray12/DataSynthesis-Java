@@ -1,17 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datagenerated_useridentities", schema = "datasynthesis", catalog = "")
 public class DatageneratedUseridentitiesEntity {
     private long userIdentitiesId;
     private String userIdentityValue;
     private String userDomain;
     private String additionalAttributes;
     private Timestamp createdDate;
-    private Short statusId;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "UserIdentitiesID", nullable = false)
     public long getUserIdentitiesId() {
         return userIdentitiesId;
     }
@@ -20,6 +23,8 @@ public class DatageneratedUseridentitiesEntity {
         this.userIdentitiesId = userIdentitiesId;
     }
 
+    @Basic
+    @Column(name = "UserIdentityValue", nullable = true, length = 20)
     public String getUserIdentityValue() {
         return userIdentityValue;
     }
@@ -28,6 +33,8 @@ public class DatageneratedUseridentitiesEntity {
         this.userIdentityValue = userIdentityValue;
     }
 
+    @Basic
+    @Column(name = "UserDomain", nullable = true, length = 20)
     public String getUserDomain() {
         return userDomain;
     }
@@ -36,6 +43,8 @@ public class DatageneratedUseridentitiesEntity {
         this.userDomain = userDomain;
     }
 
+    @Basic
+    @Column(name = "AdditionalAttributes", nullable = true, length = 40)
     public String getAdditionalAttributes() {
         return additionalAttributes;
     }
@@ -44,6 +53,8 @@ public class DatageneratedUseridentitiesEntity {
         this.additionalAttributes = additionalAttributes;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -52,14 +63,8 @@ public class DatageneratedUseridentitiesEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -82,7 +87,6 @@ public class DatageneratedUseridentitiesEntity {
         if (additionalAttributes != null ? !additionalAttributes.equals(that.additionalAttributes) : that.additionalAttributes != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
 
@@ -96,16 +100,7 @@ public class DatageneratedUseridentitiesEntity {
         result = 31 * result + (userDomain != null ? userDomain.hashCode() : 0);
         result = 31 * result + (additionalAttributes != null ? additionalAttributes.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

@@ -1,19 +1,22 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datagenerated_dateofbirth", schema = "datasynthesis", catalog = "")
 public class DatageneratedDateofbirthEntity {
     private long dateofBirthsId;
     private String dateOfBirth;
     private Date dateOfBirthDate;
     private Integer age;
     private Timestamp createdDate;
-    private Short statusId;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "DateofBirthsID", nullable = false)
     public long getDateofBirthsId() {
         return dateofBirthsId;
     }
@@ -22,6 +25,8 @@ public class DatageneratedDateofbirthEntity {
         this.dateofBirthsId = dateofBirthsId;
     }
 
+    @Basic
+    @Column(name = "DateOfBirth", nullable = true, length = 12)
     public String getDateOfBirth() {
         return dateOfBirth;
     }
@@ -30,6 +35,8 @@ public class DatageneratedDateofbirthEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
+    @Basic
+    @Column(name = "DateOfBirthDate", nullable = true)
     public Date getDateOfBirthDate() {
         return dateOfBirthDate;
     }
@@ -38,6 +45,8 @@ public class DatageneratedDateofbirthEntity {
         this.dateOfBirthDate = dateOfBirthDate;
     }
 
+    @Basic
+    @Column(name = "Age", nullable = true)
     public Integer getAge() {
         return age;
     }
@@ -46,6 +55,8 @@ public class DatageneratedDateofbirthEntity {
         this.age = age;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -54,14 +65,8 @@ public class DatageneratedDateofbirthEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -70,6 +75,8 @@ public class DatageneratedDateofbirthEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -91,7 +98,6 @@ public class DatageneratedDateofbirthEntity {
             return false;
         if (age != null ? !age.equals(that.age) : that.age != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
@@ -106,17 +112,8 @@ public class DatageneratedDateofbirthEntity {
         result = 31 * result + (dateOfBirthDate != null ? dateOfBirthDate.hashCode() : 0);
         result = 31 * result + (age != null ? age.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

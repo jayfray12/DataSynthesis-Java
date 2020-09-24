@@ -4,13 +4,16 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.datasynthesis.hibernatemappings.DatabuiltNamesEntity" table="databuilt_names"
+    <class name="com.datasynthesis.hibernatemappings.DatabuiltProductsEntity" table="databuilt_products"
            schema="datasynthesis">
-        <id name="dataBuiltNamesId">
-            <column name="DataBuiltNamesID" sql-type="bigint"/>
+        <id name="databuiltProductsId">
+            <column name="DatabuiltProductsID" sql-type="bigint"/>
         </id>
-        <property name="completeName">
-            <column name="CompleteName" sql-type="varchar(100)" length="100" not-null="true"/>
+        <property name="productId">
+            <column name="ProductID" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="productName">
+            <column name="ProductName" sql-type="varchar(99)" length="99" not-null="true"/>
         </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>

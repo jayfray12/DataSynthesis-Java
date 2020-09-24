@@ -1,16 +1,19 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "dataexisting_upccodes", schema = "datasynthesis", catalog = "")
 public class DataexistingUpccodesEntity {
     private long upcCodeId;
     private String upcCodeName;
     private String upcProductName;
     private Timestamp createdDate;
-    private Short statusId;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "UPCCodeID", nullable = false)
     public long getUpcCodeId() {
         return upcCodeId;
     }
@@ -19,6 +22,8 @@ public class DataexistingUpccodesEntity {
         this.upcCodeId = upcCodeId;
     }
 
+    @Basic
+    @Column(name = "UPCCodeName", nullable = true, length = 15)
     public String getUpcCodeName() {
         return upcCodeName;
     }
@@ -27,6 +32,8 @@ public class DataexistingUpccodesEntity {
         this.upcCodeName = upcCodeName;
     }
 
+    @Basic
+    @Column(name = "UPCProductName", nullable = true, length = 150)
     public String getUpcProductName() {
         return upcProductName;
     }
@@ -35,6 +42,8 @@ public class DataexistingUpccodesEntity {
         this.upcProductName = upcProductName;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -43,14 +52,8 @@ public class DataexistingUpccodesEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -71,7 +74,6 @@ public class DataexistingUpccodesEntity {
         if (upcProductName != null ? !upcProductName.equals(that.upcProductName) : that.upcProductName != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
 
@@ -84,16 +86,7 @@ public class DataexistingUpccodesEntity {
         result = 31 * result + (upcCodeName != null ? upcCodeName.hashCode() : 0);
         result = 31 * result + (upcProductName != null ? upcProductName.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

@@ -15,17 +15,5 @@
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusId" sql-type="smallint" not-null="true"/>
-        </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusId" not-null="true"/>
-        </many-to-one>
-        <set name="datageneratedAddressesByAddressFormatTypeId" inverse="true">
-            <key>
-                <column name="AddressFormatTypeId" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.DatageneratedAddressesEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

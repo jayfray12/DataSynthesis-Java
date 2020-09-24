@@ -1,23 +1,24 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "dataexisting_zipcodeintl", schema = "datasynthesis", catalog = "")
 public class DataexistingZipcodeintlEntity {
     private int zipCodeIntnlId;
     private String zipCode;
     private String zipCodeType;
     private String city;
-    private Short country;
     private String lattitude;
     private String longitude;
     private String location;
     private Timestamp createdDate;
-    private Short statusId;
     private String createdUser;
     private String registeredApp;
-    private RefdataCountriesEntity refdataCountriesByCountry;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "ZipCodeIntnlID", nullable = false)
     public int getZipCodeIntnlId() {
         return zipCodeIntnlId;
     }
@@ -26,6 +27,8 @@ public class DataexistingZipcodeintlEntity {
         this.zipCodeIntnlId = zipCodeIntnlId;
     }
 
+    @Basic
+    @Column(name = "ZipCode", nullable = false, length = 10)
     public String getZipCode() {
         return zipCode;
     }
@@ -34,6 +37,8 @@ public class DataexistingZipcodeintlEntity {
         this.zipCode = zipCode;
     }
 
+    @Basic
+    @Column(name = "ZipCodeType", nullable = true, length = 15)
     public String getZipCodeType() {
         return zipCodeType;
     }
@@ -42,6 +47,8 @@ public class DataexistingZipcodeintlEntity {
         this.zipCodeType = zipCodeType;
     }
 
+    @Basic
+    @Column(name = "City", nullable = true, length = 75)
     public String getCity() {
         return city;
     }
@@ -50,14 +57,8 @@ public class DataexistingZipcodeintlEntity {
         this.city = city;
     }
 
-    public Short getCountry() {
-        return country;
-    }
-
-    public void setCountry(Short country) {
-        this.country = country;
-    }
-
+    @Basic
+    @Column(name = "Lattitude", nullable = true, length = 10)
     public String getLattitude() {
         return lattitude;
     }
@@ -66,6 +67,8 @@ public class DataexistingZipcodeintlEntity {
         this.lattitude = lattitude;
     }
 
+    @Basic
+    @Column(name = "Longitude", nullable = true, length = 10)
     public String getLongitude() {
         return longitude;
     }
@@ -74,6 +77,8 @@ public class DataexistingZipcodeintlEntity {
         this.longitude = longitude;
     }
 
+    @Basic
+    @Column(name = "Location", nullable = true, length = 99)
     public String getLocation() {
         return location;
     }
@@ -82,6 +87,8 @@ public class DataexistingZipcodeintlEntity {
         this.location = location;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -90,14 +97,8 @@ public class DataexistingZipcodeintlEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -106,6 +107,8 @@ public class DataexistingZipcodeintlEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -125,12 +128,10 @@ public class DataexistingZipcodeintlEntity {
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (zipCodeType != null ? !zipCodeType.equals(that.zipCodeType) : that.zipCodeType != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (country != null ? !country.equals(that.country) : that.country != null) return false;
         if (lattitude != null ? !lattitude.equals(that.lattitude) : that.lattitude != null) return false;
         if (longitude != null ? !longitude.equals(that.longitude) : that.longitude != null) return false;
         if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
@@ -144,30 +145,12 @@ public class DataexistingZipcodeintlEntity {
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (zipCodeType != null ? zipCodeType.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (lattitude != null ? lattitude.hashCode() : 0);
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataCountriesEntity getRefdataCountriesByCountry() {
-        return refdataCountriesByCountry;
-    }
-
-    public void setRefdataCountriesByCountry(RefdataCountriesEntity refdataCountriesByCountry) {
-        this.refdataCountriesByCountry = refdataCountriesByCountry;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

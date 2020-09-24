@@ -12,9 +12,6 @@
         <property name="dataTypeGenConfigName">
             <column name="DataTypeGenConfigName" sql-type="varchar(25)" length="25" not-null="true"/>
         </property>
-        <property name="dataAttributeId">
-            <column name="DataAttributeID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="specialInstructions">
             <column name="SpecialInstructions" sql-type="varchar(99)" length="99" not-null="true"/>
         </property>
@@ -27,17 +24,8 @@
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="createdUser">
             <column name="CreatedUser" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
-        <property name="applicationId">
-            <column name="ApplicationID" sql-type="bigint" not-null="true"/>
-        </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

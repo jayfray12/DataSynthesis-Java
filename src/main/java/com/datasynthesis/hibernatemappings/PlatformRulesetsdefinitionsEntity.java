@@ -1,21 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "platform_rulesetsdefinitions", schema = "datasynthesis", catalog = "")
 public class PlatformRulesetsdefinitionsEntity {
     private String rulesetDefinitionsId;
     private String rulesetDefinitionName;
-    private Long ruleSetId;
     private Short stepOrderId;
-    private String operationTypeId;
     private String rulesetDefValue;
-    private Short statusId;
     private Timestamp createdDate;
     private Timestamp effectiveDate;
-    private PlatformRulesetsEntity platformRulesetsByRuleSetId;
-    private RefdataOperationtypeEntity refdataOperationtypeByOperationTypeId;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "RulesetDefinitionsID", nullable = false, length = 38)
     public String getRulesetDefinitionsId() {
         return rulesetDefinitionsId;
     }
@@ -24,6 +23,8 @@ public class PlatformRulesetsdefinitionsEntity {
         this.rulesetDefinitionsId = rulesetDefinitionsId;
     }
 
+    @Basic
+    @Column(name = "RulesetDefinitionName", nullable = true, length = 50)
     public String getRulesetDefinitionName() {
         return rulesetDefinitionName;
     }
@@ -32,14 +33,8 @@ public class PlatformRulesetsdefinitionsEntity {
         this.rulesetDefinitionName = rulesetDefinitionName;
     }
 
-    public Long getRuleSetId() {
-        return ruleSetId;
-    }
-
-    public void setRuleSetId(Long ruleSetId) {
-        this.ruleSetId = ruleSetId;
-    }
-
+    @Basic
+    @Column(name = "StepOrderID", nullable = true)
     public Short getStepOrderId() {
         return stepOrderId;
     }
@@ -48,14 +43,8 @@ public class PlatformRulesetsdefinitionsEntity {
         this.stepOrderId = stepOrderId;
     }
 
-    public String getOperationTypeId() {
-        return operationTypeId;
-    }
-
-    public void setOperationTypeId(String operationTypeId) {
-        this.operationTypeId = operationTypeId;
-    }
-
+    @Basic
+    @Column(name = "RulesetDefValue", nullable = true, length = 40)
     public String getRulesetDefValue() {
         return rulesetDefValue;
     }
@@ -64,14 +53,8 @@ public class PlatformRulesetsdefinitionsEntity {
         this.rulesetDefValue = rulesetDefValue;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -80,6 +63,8 @@ public class PlatformRulesetsdefinitionsEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "EffectiveDate", nullable = true)
     public Timestamp getEffectiveDate() {
         return effectiveDate;
     }
@@ -99,13 +84,9 @@ public class PlatformRulesetsdefinitionsEntity {
             return false;
         if (rulesetDefinitionName != null ? !rulesetDefinitionName.equals(that.rulesetDefinitionName) : that.rulesetDefinitionName != null)
             return false;
-        if (ruleSetId != null ? !ruleSetId.equals(that.ruleSetId) : that.ruleSetId != null) return false;
         if (stepOrderId != null ? !stepOrderId.equals(that.stepOrderId) : that.stepOrderId != null) return false;
-        if (operationTypeId != null ? !operationTypeId.equals(that.operationTypeId) : that.operationTypeId != null)
-            return false;
         if (rulesetDefValue != null ? !rulesetDefValue.equals(that.rulesetDefValue) : that.rulesetDefValue != null)
             return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (effectiveDate != null ? !effectiveDate.equals(that.effectiveDate) : that.effectiveDate != null)
             return false;
@@ -117,37 +98,10 @@ public class PlatformRulesetsdefinitionsEntity {
     public int hashCode() {
         int result = rulesetDefinitionsId != null ? rulesetDefinitionsId.hashCode() : 0;
         result = 31 * result + (rulesetDefinitionName != null ? rulesetDefinitionName.hashCode() : 0);
-        result = 31 * result + (ruleSetId != null ? ruleSetId.hashCode() : 0);
         result = 31 * result + (stepOrderId != null ? stepOrderId.hashCode() : 0);
-        result = 31 * result + (operationTypeId != null ? operationTypeId.hashCode() : 0);
         result = 31 * result + (rulesetDefValue != null ? rulesetDefValue.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (effectiveDate != null ? effectiveDate.hashCode() : 0);
         return result;
-    }
-
-    public PlatformRulesetsEntity getPlatformRulesetsByRuleSetId() {
-        return platformRulesetsByRuleSetId;
-    }
-
-    public void setPlatformRulesetsByRuleSetId(PlatformRulesetsEntity platformRulesetsByRuleSetId) {
-        this.platformRulesetsByRuleSetId = platformRulesetsByRuleSetId;
-    }
-
-    public RefdataOperationtypeEntity getRefdataOperationtypeByOperationTypeId() {
-        return refdataOperationtypeByOperationTypeId;
-    }
-
-    public void setRefdataOperationtypeByOperationTypeId(RefdataOperationtypeEntity refdataOperationtypeByOperationTypeId) {
-        this.refdataOperationtypeByOperationTypeId = refdataOperationtypeByOperationTypeId;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

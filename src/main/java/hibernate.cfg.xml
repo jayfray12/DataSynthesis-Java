@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="connection.username"/> -->
+        <!--<property name="connection.password"/> -->
+        <property name="connection.username">root</property>
+        <property name="connection.password">Developer123</property>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://alscott1-mac:3306/datasynthesis</property>
+        <!-- JDBC connection pool settings ... using built-in test pool -->
+        <property name="connection.pool_size">10</property>
+        <!-- Select our SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Echo the SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- Set the current session context -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create-drop</property>
+        <!-- Mapping Resources -->
+        <mapping resource="AuditingDatarequestEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.AuditingDatarequestEntity"/>
+        <mapping resource="AuditingDatarequestdetailEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.AuditingDatarequestdetailEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltAddressEntity"/>
+        <mapping resource="DatabuiltAddressEntityhbm.xml"/>
+        <mapping resource="DatabuiltBankaccountEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltBankaccountEntity"/>
+        <mapping resource="DatabuiltCorporationsEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltCorporationsEntity"/>
+        <mapping resource="DatabuiltNamesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltNamesEntity"/>
+        <mapping resource="DatabuiltPhonenumbersEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltPhonenumbersEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatabuiltProductsEntity"/>
+        <mapping resource="DatabuiltProductsEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingAbabankingEntity"/>
+        <mapping resource="DataexistingAbabankingEntityhbm.xml"/>
+        <mapping resource="DataexistingAreacodeEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingAreacodeEntity"/>
+        <mapping resource="DataexistingAreacodeintlEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingAreacodeintlEntity"/>
+        <mapping resource="DataexistingCompaniesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingCompaniesEntity"/>
+        <mapping resource="DataexistingNamefirstEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingNamefirstEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingNamelastEntity"/>
+        <mapping resource="DataexistingNamelastEntityhbm.xml"/>
+        <mapping resource="DataexistingUpccodesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingUpccodesEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingZipcodeintlEntity"/>
+        <mapping resource="DataexistingZipcodeintlEntityhbm.xml"/>
+        <mapping resource="DataexistingZipcodeusEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DataexistingZipcodeusEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedAccountnumbersEntity"/>
+        <mapping resource="DatageneratedAccountnumbersEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedAddressesEntity"/>
+        <mapping resource="DatageneratedAddressesEntityhbm.xml"/>
+        <mapping resource="DatageneratedBankaccountEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedBankaccountEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedCreditcardEntity"/>
+        <mapping resource="DatageneratedCreditcardEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedDateofbirthEntity"/>
+        <mapping resource="DatageneratedDateofbirthEntityhbm.xml"/>
+        <mapping resource="DatageneratedDriverslicensesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedDriverslicensesEntity"/>
+        <mapping resource="DatageneratedEinEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedEinEntity"/>
+        <mapping resource="DatageneratedPhonenumberEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedPhonenumberEntity"/>
+        <mapping resource="DatageneratedPhonenumbersintlEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedPhonenumbersintlEntity"/>
+        <mapping resource="DatageneratedSocialsecuritynumberEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedSocialsecuritynumberEntity"/>
+        <mapping resource="DatageneratedUseridentitiesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatageneratedUseridentitiesEntity"/>
+        <mapping resource="DatamodelDatatablesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.DatamodelDatatablesEntity"/>
+        <mapping resource="PlatformAppsettingEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformAppsettingEntity"/>
+        <mapping resource="PlatformDataattributesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformDataattributesEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformDatagenconfigEntity"/>
+        <mapping resource="PlatformDatagenconfigEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformDatastructuresEntity"/>
+        <mapping resource="PlatformDatastructuresEntityhbm.xml"/>
+        <mapping resource="PlatformDatastructurestodataattributesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformDatastructurestodataattributesEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformRulesetsEntity"/>
+        <mapping resource="PlatformRulesetsEntityhbm.xml"/>
+        <mapping resource="PlatformRulesetsattributesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformRulesetsattributesEntity"/>
+        <mapping resource="PlatformRulesetsdefinitionsEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.PlatformRulesetsdefinitionsEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataAddressformattypeEntity"/>
+        <mapping resource="RefdataAddressformattypeEntityhbm.xml"/>
+        <mapping resource="RefdataApplicationEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataApplicationEntity"/>
+        <mapping resource="RefdataCodesetEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataCodesetEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataCodesetvaluesEntity"/>
+        <mapping resource="RefdataCodesetvaluesEntityhbm.xml"/>
+        <mapping resource="RefdataCountriesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataCountriesEntity"/>
+        <mapping resource="RefdataIndustrystdEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataIndustrystdEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataOperationtypeEntity"/>
+        <mapping resource="RefdataOperationtypeEntityhbm.xml"/>
+        <mapping resource="RefdataOrganizationEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataOrganizationEntity"/>
+        <mapping resource="RefdataSensitivityflagEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataSensitivityflagEntity"/>
+        <mapping resource="RefdataStatusEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataStatusEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataTimezonesEntity"/>
+        <mapping resource="RefdataTimezonesEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataUsstatesEntity"/>
+        <mapping resource="RefdataUsstatesEntityhbm.xml"/>
+        <mapping resource="RefdataVendorEntityhbm.xml"/>
+        <mapping class="com.datasynthesis.hibernatemappings.RefdataVendorEntity"/>
+        <mapping class="com.datasynthesis.hibernatemappings.TermsCodesetstoapplicationEntity"/>
+        <mapping resource="TermsCodesetstoapplicationEntityhbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

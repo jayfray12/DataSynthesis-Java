@@ -12,14 +12,8 @@
         <property name="dln">
             <column name="DLN" sql-type="varchar(25)" length="25" not-null="true"/>
         </property>
-        <property name="stateCode">
-            <column name="StateCode" sql-type="varchar(2)" length="2" not-null="true"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
-        </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
         </property>
         <property name="completeDriversLicenseNumber">
             <column name="CompleteDriversLicenseNumber" sql-type="varchar(30)" length="30" not-null="true"/>
@@ -30,12 +24,5 @@
         <property name="registeredApp">
             <column name="RegisteredApp" sql-type="char(38)" length="38" not-null="true"/>
         </property>
-        <many-to-one name="refdataUsstatesByStateCode"
-                     class="com.datasynthesis.hibernatemappings.RefdataUsstatesEntity">
-            <column name="StateCode" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -15,9 +15,6 @@
         <property name="gender">
             <column name="Gender" sql-type="varchar(1)" length="1" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
@@ -27,8 +24,5 @@
         <property name="registeredApp">
             <column name="RegisteredApp" sql-type="char(38)" length="38" not-null="true"/>
         </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

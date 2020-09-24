@@ -1,19 +1,18 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "refdata_countries", schema = "datasynthesis", catalog = "")
 public class RefdataCountriesEntity {
     private short countryId;
     private String idd;
     private String countryName;
     private Timestamp createdDate;
-    private Short statusId;
-    private Collection<DataexistingAreacodeintlEntity> dataexistingAreacodeintlsByCountryId;
-    private Collection<DataexistingZipcodeintlEntity> dataexistingZipcodeintlsByCountryId;
-    private Collection<DatageneratedPhonenumbersintlEntity> datageneratedPhonenumbersintlsByCountryId;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "CountryID", nullable = false)
     public short getCountryId() {
         return countryId;
     }
@@ -22,6 +21,8 @@ public class RefdataCountriesEntity {
         this.countryId = countryId;
     }
 
+    @Basic
+    @Column(name = "IDD", nullable = true, length = 5)
     public String getIdd() {
         return idd;
     }
@@ -30,6 +31,8 @@ public class RefdataCountriesEntity {
         this.idd = idd;
     }
 
+    @Basic
+    @Column(name = "CountryName", nullable = true, length = 59)
     public String getCountryName() {
         return countryName;
     }
@@ -38,20 +41,14 @@ public class RefdataCountriesEntity {
         this.countryName = countryName;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
     }
 
     @Override
@@ -65,7 +62,6 @@ public class RefdataCountriesEntity {
         if (idd != null ? !idd.equals(that.idd) : that.idd != null) return false;
         if (countryName != null ? !countryName.equals(that.countryName) : that.countryName != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
 
         return true;
     }
@@ -76,39 +72,6 @@ public class RefdataCountriesEntity {
         result = 31 * result + (idd != null ? idd.hashCode() : 0);
         result = 31 * result + (countryName != null ? countryName.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         return result;
-    }
-
-    public Collection<DataexistingAreacodeintlEntity> getDataexistingAreacodeintlsByCountryId() {
-        return dataexistingAreacodeintlsByCountryId;
-    }
-
-    public void setDataexistingAreacodeintlsByCountryId(Collection<DataexistingAreacodeintlEntity> dataexistingAreacodeintlsByCountryId) {
-        this.dataexistingAreacodeintlsByCountryId = dataexistingAreacodeintlsByCountryId;
-    }
-
-    public Collection<DataexistingZipcodeintlEntity> getDataexistingZipcodeintlsByCountryId() {
-        return dataexistingZipcodeintlsByCountryId;
-    }
-
-    public void setDataexistingZipcodeintlsByCountryId(Collection<DataexistingZipcodeintlEntity> dataexistingZipcodeintlsByCountryId) {
-        this.dataexistingZipcodeintlsByCountryId = dataexistingZipcodeintlsByCountryId;
-    }
-
-    public Collection<DatageneratedPhonenumbersintlEntity> getDatageneratedPhonenumbersintlsByCountryId() {
-        return datageneratedPhonenumbersintlsByCountryId;
-    }
-
-    public void setDatageneratedPhonenumbersintlsByCountryId(Collection<DatageneratedPhonenumbersintlEntity> datageneratedPhonenumbersintlsByCountryId) {
-        this.datageneratedPhonenumbersintlsByCountryId = datageneratedPhonenumbersintlsByCountryId;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

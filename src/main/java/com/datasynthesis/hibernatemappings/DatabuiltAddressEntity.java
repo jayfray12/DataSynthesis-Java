@@ -1,7 +1,10 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "databuilt_address", schema = "datasynthesis", catalog = "")
 public class DatabuiltAddressEntity {
     private long completeAddressId;
     private String address1;
@@ -9,9 +12,10 @@ public class DatabuiltAddressEntity {
     private String stateId;
     private String zipCode;
     private Timestamp createdDate;
-    private Short statusId;
-    private RefdataStatusEntity refdataStatusByStatusId;
+    private String registeredApp;
 
+    @Id
+    @Column(name = "CompleteAddressID", nullable = false)
     public long getCompleteAddressId() {
         return completeAddressId;
     }
@@ -20,6 +24,8 @@ public class DatabuiltAddressEntity {
         this.completeAddressId = completeAddressId;
     }
 
+    @Basic
+    @Column(name = "Address1", nullable = true, length = 99)
     public String getAddress1() {
         return address1;
     }
@@ -28,6 +34,8 @@ public class DatabuiltAddressEntity {
         this.address1 = address1;
     }
 
+    @Basic
+    @Column(name = "City", nullable = true, length = 70)
     public String getCity() {
         return city;
     }
@@ -36,6 +44,8 @@ public class DatabuiltAddressEntity {
         this.city = city;
     }
 
+    @Basic
+    @Column(name = "StateID", nullable = true, length = 2)
     public String getStateId() {
         return stateId;
     }
@@ -44,6 +54,8 @@ public class DatabuiltAddressEntity {
         this.stateId = stateId;
     }
 
+    @Basic
+    @Column(name = "ZipCode", nullable = true, length = 10)
     public String getZipCode() {
         return zipCode;
     }
@@ -52,6 +64,8 @@ public class DatabuiltAddressEntity {
         this.zipCode = zipCode;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -60,12 +74,14 @@ public class DatabuiltAddressEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
+    public String getRegisteredApp() {
+        return registeredApp;
     }
 
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
+    public void setRegisteredApp(String registeredApp) {
+        this.registeredApp = registeredApp;
     }
 
     @Override
@@ -81,7 +97,8 @@ public class DatabuiltAddressEntity {
         if (stateId != null ? !stateId.equals(that.stateId) : that.stateId != null) return false;
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
+        if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
+            return false;
 
         return true;
     }
@@ -94,15 +111,7 @@ public class DatabuiltAddressEntity {
         result = 31 * result + (stateId != null ? stateId.hashCode() : 0);
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
+        result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

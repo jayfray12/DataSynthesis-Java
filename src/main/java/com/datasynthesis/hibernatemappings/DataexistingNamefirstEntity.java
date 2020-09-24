@@ -1,17 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "dataexisting_namefirst", schema = "datasynthesis", catalog = "")
 public class DataexistingNamefirstEntity {
     private long firstNameId;
     private String firstName;
     private String gender;
-    private Short statusId;
     private Timestamp createdDate;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "FirstNameID", nullable = false)
     public long getFirstNameId() {
         return firstNameId;
     }
@@ -20,6 +23,8 @@ public class DataexistingNamefirstEntity {
         this.firstNameId = firstNameId;
     }
 
+    @Basic
+    @Column(name = "FirstName", nullable = true, length = 39)
     public String getFirstName() {
         return firstName;
     }
@@ -28,6 +33,8 @@ public class DataexistingNamefirstEntity {
         this.firstName = firstName;
     }
 
+    @Basic
+    @Column(name = "Gender", nullable = true, length = 1)
     public String getGender() {
         return gender;
     }
@@ -36,14 +43,8 @@ public class DataexistingNamefirstEntity {
         this.gender = gender;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -52,6 +53,8 @@ public class DataexistingNamefirstEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -60,6 +63,8 @@ public class DataexistingNamefirstEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -78,7 +83,6 @@ public class DataexistingNamefirstEntity {
         if (firstNameId != that.firstNameId) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
@@ -92,18 +96,9 @@ public class DataexistingNamefirstEntity {
         int result = (int) (firstNameId ^ (firstNameId >>> 32));
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

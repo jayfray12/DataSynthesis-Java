@@ -15,15 +15,5 @@
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
-        <set name="platformRulesetsdefinitionsByOperationTypeId" inverse="true">
-            <key>
-                <column name="OperationTypeID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.PlatformRulesetsdefinitionsEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

@@ -1,17 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "databuilt_phonenumbers", schema = "datasynthesis", catalog = "")
 public class DatabuiltPhonenumbersEntity {
     private long dataBuiltPhoneNumbersId;
     private String areaCode;
     private String phoneNumber;
     private String completePhoneNumber;
     private Timestamp createdDate;
-    private Short statusId;
-    private RefdataStatusEntity refdataStatusByStatusId;
-    private RefdataStatusEntity refdataStatusByStatusId_0;
+    private String registeredApp;
 
+    @Id
+    @Column(name = "DataBuiltPhoneNumbersID", nullable = false)
     public long getDataBuiltPhoneNumbersId() {
         return dataBuiltPhoneNumbersId;
     }
@@ -20,6 +23,8 @@ public class DatabuiltPhonenumbersEntity {
         this.dataBuiltPhoneNumbersId = dataBuiltPhoneNumbersId;
     }
 
+    @Basic
+    @Column(name = "AreaCode", nullable = true, length = 3)
     public String getAreaCode() {
         return areaCode;
     }
@@ -28,6 +33,8 @@ public class DatabuiltPhonenumbersEntity {
         this.areaCode = areaCode;
     }
 
+    @Basic
+    @Column(name = "PhoneNumber", nullable = true, length = 8)
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -36,6 +43,8 @@ public class DatabuiltPhonenumbersEntity {
         this.phoneNumber = phoneNumber;
     }
 
+    @Basic
+    @Column(name = "CompletePhoneNumber", nullable = true, length = 14)
     public String getCompletePhoneNumber() {
         return completePhoneNumber;
     }
@@ -44,6 +53,8 @@ public class DatabuiltPhonenumbersEntity {
         this.completePhoneNumber = completePhoneNumber;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -52,12 +63,14 @@ public class DatabuiltPhonenumbersEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
+    public String getRegisteredApp() {
+        return registeredApp;
     }
 
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
+    public void setRegisteredApp(String registeredApp) {
+        this.registeredApp = registeredApp;
     }
 
     @Override
@@ -73,7 +86,8 @@ public class DatabuiltPhonenumbersEntity {
         if (completePhoneNumber != null ? !completePhoneNumber.equals(that.completePhoneNumber) : that.completePhoneNumber != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
+        if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
+            return false;
 
         return true;
     }
@@ -85,23 +99,7 @@ public class DatabuiltPhonenumbersEntity {
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (completePhoneNumber != null ? completePhoneNumber.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
+        result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId_0() {
-        return refdataStatusByStatusId_0;
-    }
-
-    public void setRefdataStatusByStatusId_0(RefdataStatusEntity refdataStatusByStatusId_0) {
-        this.refdataStatusByStatusId_0 = refdataStatusByStatusId_0;
     }
 }

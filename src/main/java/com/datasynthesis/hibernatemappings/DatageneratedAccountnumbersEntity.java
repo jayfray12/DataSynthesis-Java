@@ -1,17 +1,19 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datagenerated_accountnumbers", schema = "datasynthesis", catalog = "")
 public class DatageneratedAccountnumbersEntity {
     private long accountNumbersId;
     private String accountNumberValue;
     private Timestamp createdDate;
     private String createdUser;
-    private Short statusId;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
-    private RefdataStatusEntity refdataStatusByStatusId_0;
 
+    @Id
+    @Column(name = "AccountNumbersID", nullable = false)
     public long getAccountNumbersId() {
         return accountNumbersId;
     }
@@ -20,6 +22,8 @@ public class DatageneratedAccountnumbersEntity {
         this.accountNumbersId = accountNumbersId;
     }
 
+    @Basic
+    @Column(name = "AccountNumberValue", nullable = true, length = 20)
     public String getAccountNumberValue() {
         return accountNumberValue;
     }
@@ -28,6 +32,8 @@ public class DatageneratedAccountnumbersEntity {
         this.accountNumberValue = accountNumberValue;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -36,6 +42,8 @@ public class DatageneratedAccountnumbersEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -44,14 +52,8 @@ public class DatageneratedAccountnumbersEntity {
         this.createdUser = createdUser;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -72,7 +74,6 @@ public class DatageneratedAccountnumbersEntity {
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
 
@@ -85,24 +86,7 @@ public class DatageneratedAccountnumbersEntity {
         result = 31 * result + (accountNumberValue != null ? accountNumberValue.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId_0() {
-        return refdataStatusByStatusId_0;
-    }
-
-    public void setRefdataStatusByStatusId_0(RefdataStatusEntity refdataStatusByStatusId_0) {
-        this.refdataStatusByStatusId_0 = refdataStatusByStatusId_0;
     }
 }

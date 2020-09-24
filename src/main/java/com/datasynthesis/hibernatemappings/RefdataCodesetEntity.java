@@ -1,20 +1,21 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "refdata_codeset", schema = "datasynthesis", catalog = "")
 public class RefdataCodesetEntity {
     private long codeSetsId;
     private String codeSetName;
     private String industryStd;
-    private Short statusId;
     private Timestamp createdDate;
     private String createdUser;
     private String codesetGuid;
     private String fieldMapping;
-    private RefdataStatusEntity refdataStatusByStatusId;
-    private Collection<RefdataCodesetvaluesEntity> refdataCodesetvaluesByCodeSetsId;
 
+    @Id
+    @Column(name = "CodeSetsID", nullable = false)
     public long getCodeSetsId() {
         return codeSetsId;
     }
@@ -23,6 +24,8 @@ public class RefdataCodesetEntity {
         this.codeSetsId = codeSetsId;
     }
 
+    @Basic
+    @Column(name = "CodeSetName", nullable = true, length = 50)
     public String getCodeSetName() {
         return codeSetName;
     }
@@ -31,6 +34,8 @@ public class RefdataCodesetEntity {
         this.codeSetName = codeSetName;
     }
 
+    @Basic
+    @Column(name = "IndustryStd", nullable = true, length = 6)
     public String getIndustryStd() {
         return industryStd;
     }
@@ -39,14 +44,8 @@ public class RefdataCodesetEntity {
         this.industryStd = industryStd;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -55,6 +54,8 @@ public class RefdataCodesetEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -63,6 +64,8 @@ public class RefdataCodesetEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "CodesetGUID", nullable = true, length = 38)
     public String getCodesetGuid() {
         return codesetGuid;
     }
@@ -71,6 +74,8 @@ public class RefdataCodesetEntity {
         this.codesetGuid = codesetGuid;
     }
 
+    @Basic
+    @Column(name = "FieldMapping", nullable = true, length = 20)
     public String getFieldMapping() {
         return fieldMapping;
     }
@@ -89,7 +94,6 @@ public class RefdataCodesetEntity {
         if (codeSetsId != that.codeSetsId) return false;
         if (codeSetName != null ? !codeSetName.equals(that.codeSetName) : that.codeSetName != null) return false;
         if (industryStd != null ? !industryStd.equals(that.industryStd) : that.industryStd != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (codesetGuid != null ? !codesetGuid.equals(that.codesetGuid) : that.codesetGuid != null) return false;
@@ -103,27 +107,10 @@ public class RefdataCodesetEntity {
         int result = (int) (codeSetsId ^ (codeSetsId >>> 32));
         result = 31 * result + (codeSetName != null ? codeSetName.hashCode() : 0);
         result = 31 * result + (industryStd != null ? industryStd.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (codesetGuid != null ? codesetGuid.hashCode() : 0);
         result = 31 * result + (fieldMapping != null ? fieldMapping.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
-    }
-
-    public Collection<RefdataCodesetvaluesEntity> getRefdataCodesetvaluesByCodeSetsId() {
-        return refdataCodesetvaluesByCodeSetsId;
-    }
-
-    public void setRefdataCodesetvaluesByCodeSetsId(Collection<RefdataCodesetvaluesEntity> refdataCodesetvaluesByCodeSetsId) {
-        this.refdataCodesetvaluesByCodeSetsId = refdataCodesetvaluesByCodeSetsId;
     }
 }

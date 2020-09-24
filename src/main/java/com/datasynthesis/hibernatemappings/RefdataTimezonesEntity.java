@@ -1,16 +1,17 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "refdata_timezones", schema = "datasynthesis", catalog = "")
 public class RefdataTimezonesEntity {
     private String timeZoneValue;
     private String timeZoneDesc;
     private Timestamp createdDate;
-    private Short statusId;
-    private Collection<DataexistingAreacodeEntity> dataexistingAreacodesByTimeZoneValue;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "TimeZoneValue", nullable = false, length = 3)
     public String getTimeZoneValue() {
         return timeZoneValue;
     }
@@ -19,6 +20,8 @@ public class RefdataTimezonesEntity {
         this.timeZoneValue = timeZoneValue;
     }
 
+    @Basic
+    @Column(name = "TimeZoneDesc", nullable = true, length = 25)
     public String getTimeZoneDesc() {
         return timeZoneDesc;
     }
@@ -27,20 +30,14 @@ public class RefdataTimezonesEntity {
         this.timeZoneDesc = timeZoneDesc;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
     }
 
     @Override
@@ -54,7 +51,6 @@ public class RefdataTimezonesEntity {
             return false;
         if (timeZoneDesc != null ? !timeZoneDesc.equals(that.timeZoneDesc) : that.timeZoneDesc != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
 
         return true;
     }
@@ -64,23 +60,6 @@ public class RefdataTimezonesEntity {
         int result = timeZoneValue != null ? timeZoneValue.hashCode() : 0;
         result = 31 * result + (timeZoneDesc != null ? timeZoneDesc.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         return result;
-    }
-
-    public Collection<DataexistingAreacodeEntity> getDataexistingAreacodesByTimeZoneValue() {
-        return dataexistingAreacodesByTimeZoneValue;
-    }
-
-    public void setDataexistingAreacodesByTimeZoneValue(Collection<DataexistingAreacodeEntity> dataexistingAreacodesByTimeZoneValue) {
-        this.dataexistingAreacodesByTimeZoneValue = dataexistingAreacodesByTimeZoneValue;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

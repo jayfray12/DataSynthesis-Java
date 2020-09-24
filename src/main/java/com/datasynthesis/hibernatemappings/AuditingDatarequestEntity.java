@@ -1,19 +1,20 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "auditing_datarequest", schema = "datasynthesis", catalog = "")
 public class AuditingDatarequestEntity {
     private long dataRequestId;
     private Timestamp dataRequestDate;
     private String createdByUser;
     private Long organizaton;
     private Long application;
-    private Short statusId;
     private Timestamp createdDate;
-    private RefdataStatusEntity refdataStatusByStatusId;
-    private Collection<AuditingDatarequestdetailEntity> auditingDatarequestdetailsByDataRequestId;
 
+    @Id
+    @Column(name = "DataRequestID", nullable = false)
     public long getDataRequestId() {
         return dataRequestId;
     }
@@ -22,6 +23,8 @@ public class AuditingDatarequestEntity {
         this.dataRequestId = dataRequestId;
     }
 
+    @Basic
+    @Column(name = "DataRequestDate", nullable = true)
     public Timestamp getDataRequestDate() {
         return dataRequestDate;
     }
@@ -30,6 +33,8 @@ public class AuditingDatarequestEntity {
         this.dataRequestDate = dataRequestDate;
     }
 
+    @Basic
+    @Column(name = "CreatedByUser", nullable = true, length = 20)
     public String getCreatedByUser() {
         return createdByUser;
     }
@@ -38,6 +43,8 @@ public class AuditingDatarequestEntity {
         this.createdByUser = createdByUser;
     }
 
+    @Basic
+    @Column(name = "Organizaton", nullable = true)
     public Long getOrganizaton() {
         return organizaton;
     }
@@ -46,6 +53,8 @@ public class AuditingDatarequestEntity {
         this.organizaton = organizaton;
     }
 
+    @Basic
+    @Column(name = "Application", nullable = true)
     public Long getApplication() {
         return application;
     }
@@ -54,14 +63,8 @@ public class AuditingDatarequestEntity {
         this.application = application;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -84,7 +87,6 @@ public class AuditingDatarequestEntity {
             return false;
         if (organizaton != null ? !organizaton.equals(that.organizaton) : that.organizaton != null) return false;
         if (application != null ? !application.equals(that.application) : that.application != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
 
         return true;
@@ -97,24 +99,7 @@ public class AuditingDatarequestEntity {
         result = 31 * result + (createdByUser != null ? createdByUser.hashCode() : 0);
         result = 31 * result + (organizaton != null ? organizaton.hashCode() : 0);
         result = 31 * result + (application != null ? application.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
-    }
-
-    public Collection<AuditingDatarequestdetailEntity> getAuditingDatarequestdetailsByDataRequestId() {
-        return auditingDatarequestdetailsByDataRequestId;
-    }
-
-    public void setAuditingDatarequestdetailsByDataRequestId(Collection<AuditingDatarequestdetailEntity> auditingDatarequestdetailsByDataRequestId) {
-        this.auditingDatarequestdetailsByDataRequestId = auditingDatarequestdetailsByDataRequestId;
     }
 }

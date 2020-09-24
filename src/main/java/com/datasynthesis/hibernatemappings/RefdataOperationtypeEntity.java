@@ -1,15 +1,17 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
+@Entity
+@Table(name = "refdata_operationtype", schema = "datasynthesis", catalog = "")
 public class RefdataOperationtypeEntity {
     private String operationTypeId;
     private String operationTypeName;
     private Timestamp createdDate;
-    private Short statusId;
-    private Collection<PlatformRulesetsdefinitionsEntity> platformRulesetsdefinitionsByOperationTypeId;
 
+    @Id
+    @Column(name = "OperationTypeID", nullable = false, length = 7)
     public String getOperationTypeId() {
         return operationTypeId;
     }
@@ -18,6 +20,8 @@ public class RefdataOperationtypeEntity {
         this.operationTypeId = operationTypeId;
     }
 
+    @Basic
+    @Column(name = "OperationTypeName", nullable = true, length = 60)
     public String getOperationTypeName() {
         return operationTypeName;
     }
@@ -26,20 +30,14 @@ public class RefdataOperationtypeEntity {
         this.operationTypeName = operationTypeName;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
     }
 
     @Override
@@ -54,7 +52,6 @@ public class RefdataOperationtypeEntity {
         if (operationTypeName != null ? !operationTypeName.equals(that.operationTypeName) : that.operationTypeName != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
 
         return true;
     }
@@ -64,15 +61,6 @@ public class RefdataOperationtypeEntity {
         int result = operationTypeId != null ? operationTypeId.hashCode() : 0;
         result = 31 * result + (operationTypeName != null ? operationTypeName.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         return result;
-    }
-
-    public Collection<PlatformRulesetsdefinitionsEntity> getPlatformRulesetsdefinitionsByOperationTypeId() {
-        return platformRulesetsdefinitionsByOperationTypeId;
-    }
-
-    public void setPlatformRulesetsdefinitionsByOperationTypeId(Collection<PlatformRulesetsdefinitionsEntity> platformRulesetsdefinitionsByOperationTypeId) {
-        this.platformRulesetsdefinitionsByOperationTypeId = platformRulesetsdefinitionsByOperationTypeId;
     }
 }

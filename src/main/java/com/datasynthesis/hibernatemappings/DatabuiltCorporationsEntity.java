@@ -1,27 +1,38 @@
-package com.datasynthesis.ormmapping;
+package com.datasynthesis.hibernatemappings;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Table(name = "databuilt_address", schema = "datasynthesis", catalog = "")
-public class DatabuiltAddressEntity {
-    private long completeAddressId;
+@Entity
+@Table(name = "databuilt_corporations", schema = "datasynthesis", catalog = "")
+public class DatabuiltCorporationsEntity {
+    private long dataBuiltCorporationId;
+    private String corporationName;
     private String address1;
     private String city;
     private String stateId;
     private String zipCode;
     private Timestamp createdDate;
-    private Short statusId;
-    private RefdataStatusEntity refdataStatusByStatusId;
+    private String registeredApp;
 
     @Id
-    @Column(name = "CompleteAddressID", nullable = false)
-    public long getCompleteAddressId() {
-        return completeAddressId;
+    @Column(name = "DataBuiltCorporationID", nullable = false)
+    public long getDataBuiltCorporationId() {
+        return dataBuiltCorporationId;
     }
 
-    public void setCompleteAddressId(long completeAddressId) {
-        this.completeAddressId = completeAddressId;
+    public void setDataBuiltCorporationId(long dataBuiltCorporationId) {
+        this.dataBuiltCorporationId = dataBuiltCorporationId;
+    }
+
+    @Basic
+    @Column(name = "CorporationName", nullable = true, length = 99)
+    public String getCorporationName() {
+        return corporationName;
+    }
+
+    public void setCorporationName(String corporationName) {
+        this.corporationName = corporationName;
     }
 
     @Basic
@@ -75,13 +86,13 @@ public class DatabuiltAddressEntity {
     }
 
     @Basic
-    @Column(name = "StatusID", nullable = true)
-    public Short getStatusId() {
-        return statusId;
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
+    public String getRegisteredApp() {
+        return registeredApp;
     }
 
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
+    public void setRegisteredApp(String registeredApp) {
+        this.registeredApp = registeredApp;
     }
 
     @Override
@@ -89,38 +100,32 @@ public class DatabuiltAddressEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DatabuiltAddressEntity that = (DatabuiltAddressEntity) o;
+        DatabuiltCorporationsEntity that = (DatabuiltCorporationsEntity) o;
 
-        if (completeAddressId != that.completeAddressId) return false;
+        if (dataBuiltCorporationId != that.dataBuiltCorporationId) return false;
+        if (corporationName != null ? !corporationName.equals(that.corporationName) : that.corporationName != null)
+            return false;
         if (address1 != null ? !address1.equals(that.address1) : that.address1 != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (stateId != null ? !stateId.equals(that.stateId) : that.stateId != null) return false;
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
+        if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (completeAddressId ^ (completeAddressId >>> 32));
+        int result = (int) (dataBuiltCorporationId ^ (dataBuiltCorporationId >>> 32));
+        result = 31 * result + (corporationName != null ? corporationName.hashCode() : 0);
         result = 31 * result + (address1 != null ? address1.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (stateId != null ? stateId.hashCode() : 0);
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
+        result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID", table = "databuilt_address")
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

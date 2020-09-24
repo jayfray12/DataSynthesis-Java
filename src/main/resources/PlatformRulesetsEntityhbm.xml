@@ -18,21 +18,8 @@
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="expirationDate">
             <column name="ExpirationDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
-        <set name="platformRulesetsdefinitionsByRuleId" inverse="true">
-            <key>
-                <column name="RuleSetID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.PlatformRulesetsdefinitionsEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

@@ -6,8 +6,8 @@
 
     <class name="com.datasynthesis.hibernatemappings.RefdataOrganizationEntity" table="refdata_organization"
            schema="datasynthesis">
-        <id name="organizationId">
-            <column name="OrganizationID" sql-type="bigint"/>
+        <id name="organizationGuid">
+            <column name="OrganizationGUID" sql-type="char(38)" length="38"/>
         </id>
         <property name="organizationInternalCode">
             <column name="OrganizationInternalCode" sql-type="varchar(10)" length="10" not-null="true"/>
@@ -24,29 +24,14 @@
         <property name="city">
             <column name="City" sql-type="varchar(60)" length="60" not-null="true"/>
         </property>
-        <property name="stateId">
-            <column name="StateID" sql-type="varchar(2)" length="2" not-null="true"/>
-        </property>
         <property name="zipCode">
             <column name="ZipCode" sql-type="varchar(12)" length="12" not-null="true"/>
         </property>
         <property name="createdUser">
             <column name="CreatedUser" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp"/>
         </property>
-        <property name="organizationGuid">
-            <column name="OrganizationGUID" sql-type="char(38)" length="38" not-null="true"/>
-        </property>
-        <many-to-one name="refdataUsstatesByStateId" class="com.datasynthesis.hibernatemappings.RefdataUsstatesEntity">
-            <column name="StateID" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

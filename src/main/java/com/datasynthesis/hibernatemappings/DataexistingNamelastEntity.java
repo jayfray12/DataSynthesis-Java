@@ -1,16 +1,19 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "dataexisting_namelast", schema = "datasynthesis", catalog = "")
 public class DataexistingNamelastEntity {
     private long lastNameId;
     private String lastName;
-    private short statusId;
     private Timestamp createdDate;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "LastNameID", nullable = false)
     public long getLastNameId() {
         return lastNameId;
     }
@@ -19,6 +22,8 @@ public class DataexistingNamelastEntity {
         this.lastNameId = lastNameId;
     }
 
+    @Basic
+    @Column(name = "LastName", nullable = true, length = 69)
     public String getLastName() {
         return lastName;
     }
@@ -27,14 +32,8 @@ public class DataexistingNamelastEntity {
         this.lastName = lastName;
     }
 
-    public short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -43,6 +42,8 @@ public class DataexistingNamelastEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -51,6 +52,8 @@ public class DataexistingNamelastEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -67,7 +70,6 @@ public class DataexistingNamelastEntity {
         DataexistingNamelastEntity that = (DataexistingNamelastEntity) o;
 
         if (lastNameId != that.lastNameId) return false;
-        if (statusId != that.statusId) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
@@ -81,18 +83,9 @@ public class DataexistingNamelastEntity {
     public int hashCode() {
         int result = (int) (lastNameId ^ (lastNameId >>> 32));
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (int) statusId;
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

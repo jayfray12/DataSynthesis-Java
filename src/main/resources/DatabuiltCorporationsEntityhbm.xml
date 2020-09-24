@@ -4,11 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.datasynthesis.hibernatemappings.DatabuiltAddressEntity" table="databuilt_address"
+    <class name="com.datasynthesis.hibernatemappings.DatabuiltCorporationsEntity" table="databuilt_corporations"
            schema="datasynthesis">
-        <id name="completeAddressId">
-            <column name="CompleteAddressID" sql-type="bigint"/>
+        <id name="dataBuiltCorporationId">
+            <column name="DataBuiltCorporationID" sql-type="bigint"/>
         </id>
+        <property name="corporationName">
+            <column name="CorporationName" sql-type="varchar(99)" length="99" not-null="true"/>
+        </property>
         <property name="address1">
             <column name="Address1" sql-type="varchar(99)" length="99" not-null="true"/>
         </property>

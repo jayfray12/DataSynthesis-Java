@@ -1,14 +1,18 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "databuilt_names", schema = "datasynthesis", catalog = "")
 public class DatabuiltNamesEntity {
     private long dataBuiltNamesId;
     private String completeName;
     private Timestamp createdDate;
-    private Short statusId;
-    private RefdataStatusEntity refdataStatusByStatusId;
+    private String registeredApp;
 
+    @Id
+    @Column(name = "DataBuiltNamesID", nullable = false)
     public long getDataBuiltNamesId() {
         return dataBuiltNamesId;
     }
@@ -17,6 +21,8 @@ public class DatabuiltNamesEntity {
         this.dataBuiltNamesId = dataBuiltNamesId;
     }
 
+    @Basic
+    @Column(name = "CompleteName", nullable = true, length = 100)
     public String getCompleteName() {
         return completeName;
     }
@@ -25,6 +31,8 @@ public class DatabuiltNamesEntity {
         this.completeName = completeName;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -33,12 +41,14 @@ public class DatabuiltNamesEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
+    public String getRegisteredApp() {
+        return registeredApp;
     }
 
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
+    public void setRegisteredApp(String registeredApp) {
+        this.registeredApp = registeredApp;
     }
 
     @Override
@@ -51,7 +61,8 @@ public class DatabuiltNamesEntity {
         if (dataBuiltNamesId != that.dataBuiltNamesId) return false;
         if (completeName != null ? !completeName.equals(that.completeName) : that.completeName != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
+        if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
+            return false;
 
         return true;
     }
@@ -61,15 +72,7 @@ public class DatabuiltNamesEntity {
         int result = (int) (dataBuiltNamesId ^ (dataBuiltNamesId >>> 32));
         result = 31 * result + (completeName != null ? completeName.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
+        result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

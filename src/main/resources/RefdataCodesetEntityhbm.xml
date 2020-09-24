@@ -15,9 +15,6 @@
         <property name="industryStd">
             <column name="IndustryStd" sql-type="varchar(6)" length="6" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
@@ -30,14 +27,5 @@
         <property name="fieldMapping">
             <column name="FieldMapping" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
-        <set name="refdataCodesetvaluesByCodeSetsId" inverse="true">
-            <key>
-                <column name="CodesetID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore" class="com.datasynthesis.hibernatemappings.RefdataCodesetvaluesEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

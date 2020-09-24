@@ -21,21 +21,8 @@
         <property name="application">
             <column name="Application" sql-type="bigint" not-null="true"/>
         </property>
-        <property name="statusId">
-            <column name="StatusID" sql-type="smallint" not-null="true"/>
-        </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
         </property>
-        <many-to-one name="refdataStatusByStatusId" class="com.datasynthesis.hibernatemappings.RefdataStatusEntity">
-            <column name="StatusID" not-null="true"/>
-        </many-to-one>
-        <set name="auditingDatarequestdetailsByDataRequestId" inverse="true">
-            <key>
-                <column name="DataRequestID" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore"
-                         class="com.datasynthesis.hibernatemappings.AuditingDatarequestdetailEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

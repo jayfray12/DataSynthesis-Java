@@ -1,14 +1,17 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "refdata_industrystd", schema = "datasynthesis", catalog = "")
 public class RefdataIndustrystdEntity {
     private String industryStd;
     private String industryStdDesc;
     private Timestamp createdDate;
-    private Short statusId;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "IndustryStd", nullable = false, length = 6)
     public String getIndustryStd() {
         return industryStd;
     }
@@ -17,6 +20,8 @@ public class RefdataIndustrystdEntity {
         this.industryStd = industryStd;
     }
 
+    @Basic
+    @Column(name = "IndustryStdDesc", nullable = true, length = 30)
     public String getIndustryStdDesc() {
         return industryStdDesc;
     }
@@ -25,20 +30,14 @@ public class RefdataIndustrystdEntity {
         this.industryStdDesc = industryStdDesc;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
     }
 
     @Override
@@ -52,7 +51,6 @@ public class RefdataIndustrystdEntity {
         if (industryStdDesc != null ? !industryStdDesc.equals(that.industryStdDesc) : that.industryStdDesc != null)
             return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
 
         return true;
     }
@@ -62,15 +60,6 @@ public class RefdataIndustrystdEntity {
         int result = industryStd != null ? industryStd.hashCode() : 0;
         result = 31 * result + (industryStdDesc != null ? industryStdDesc.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

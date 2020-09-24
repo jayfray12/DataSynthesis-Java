@@ -1,7 +1,10 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "dataexisting_zipcodeus", schema = "datasynthesis", catalog = "")
 public class DataexistingZipcodeusEntity {
     private long zipCodeId;
     private String zipCode;
@@ -12,11 +15,11 @@ public class DataexistingZipcodeusEntity {
     private String longitude;
     private String location;
     private Timestamp createdDate;
-    private Short statusId;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "ZipCodeID", nullable = false)
     public long getZipCodeId() {
         return zipCodeId;
     }
@@ -25,6 +28,8 @@ public class DataexistingZipcodeusEntity {
         this.zipCodeId = zipCodeId;
     }
 
+    @Basic
+    @Column(name = "ZipCode", nullable = false, length = 5)
     public String getZipCode() {
         return zipCode;
     }
@@ -33,6 +38,8 @@ public class DataexistingZipcodeusEntity {
         this.zipCode = zipCode;
     }
 
+    @Basic
+    @Column(name = "ZipCodeType", nullable = true, length = 15)
     public String getZipCodeType() {
         return zipCodeType;
     }
@@ -41,6 +48,8 @@ public class DataexistingZipcodeusEntity {
         this.zipCodeType = zipCodeType;
     }
 
+    @Basic
+    @Column(name = "City", nullable = true, length = 75)
     public String getCity() {
         return city;
     }
@@ -49,6 +58,8 @@ public class DataexistingZipcodeusEntity {
         this.city = city;
     }
 
+    @Basic
+    @Column(name = "State", nullable = true, length = 2)
     public String getState() {
         return state;
     }
@@ -57,6 +68,8 @@ public class DataexistingZipcodeusEntity {
         this.state = state;
     }
 
+    @Basic
+    @Column(name = "Lattitude", nullable = true, length = 10)
     public String getLattitude() {
         return lattitude;
     }
@@ -65,6 +78,8 @@ public class DataexistingZipcodeusEntity {
         this.lattitude = lattitude;
     }
 
+    @Basic
+    @Column(name = "Longitude", nullable = true, length = 10)
     public String getLongitude() {
         return longitude;
     }
@@ -73,6 +88,8 @@ public class DataexistingZipcodeusEntity {
         this.longitude = longitude;
     }
 
+    @Basic
+    @Column(name = "Location", nullable = true, length = 99)
     public String getLocation() {
         return location;
     }
@@ -81,6 +98,8 @@ public class DataexistingZipcodeusEntity {
         this.location = location;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -89,14 +108,8 @@ public class DataexistingZipcodeusEntity {
         this.createdDate = createdDate;
     }
 
-    public Short getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Short statusId) {
-        this.statusId = statusId;
-    }
-
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -105,6 +118,8 @@ public class DataexistingZipcodeusEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -129,7 +144,6 @@ public class DataexistingZipcodeusEntity {
         if (longitude != null ? !longitude.equals(that.longitude) : that.longitude != null) return false;
         if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
@@ -148,17 +162,8 @@ public class DataexistingZipcodeusEntity {
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

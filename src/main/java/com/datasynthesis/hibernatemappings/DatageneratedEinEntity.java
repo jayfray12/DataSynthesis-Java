@@ -1,7 +1,10 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datagenerated_ein", schema = "datasynthesis", catalog = "")
 public class DatageneratedEinEntity {
     private long einid;
     private String einValue;
@@ -9,8 +12,9 @@ public class DatageneratedEinEntity {
     private Short statusId;
     private String createdUser;
     private String registeredApp;
-    private RefdataStatusEntity refdataStatusByStatusId;
 
+    @Id
+    @Column(name = "EINID", nullable = false)
     public long getEinid() {
         return einid;
     }
@@ -19,6 +23,8 @@ public class DatageneratedEinEntity {
         this.einid = einid;
     }
 
+    @Basic
+    @Column(name = "EINValue", nullable = true, length = 10)
     public String getEinValue() {
         return einValue;
     }
@@ -27,6 +33,8 @@ public class DatageneratedEinEntity {
         this.einValue = einValue;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }
@@ -35,6 +43,8 @@ public class DatageneratedEinEntity {
         this.createdDate = createdDate;
     }
 
+    @Basic
+    @Column(name = "StatusID", nullable = true)
     public Short getStatusId() {
         return statusId;
     }
@@ -43,6 +53,8 @@ public class DatageneratedEinEntity {
         this.statusId = statusId;
     }
 
+    @Basic
+    @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -51,6 +63,8 @@ public class DatageneratedEinEntity {
         this.createdUser = createdUser;
     }
 
+    @Basic
+    @Column(name = "RegisteredApp", nullable = true, length = 38)
     public String getRegisteredApp() {
         return registeredApp;
     }
@@ -86,13 +100,5 @@ public class DatageneratedEinEntity {
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
-    }
-
-    public RefdataStatusEntity getRefdataStatusByStatusId() {
-        return refdataStatusByStatusId;
-    }
-
-    public void setRefdataStatusByStatusId(RefdataStatusEntity refdataStatusByStatusId) {
-        this.refdataStatusByStatusId = refdataStatusByStatusId;
     }
 }

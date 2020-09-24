@@ -1,13 +1,18 @@
 package com.datasynthesis.hibernatemappings;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "datamodel_datatables", schema = "datasynthesis", catalog = "")
 public class DatamodelDatatablesEntity {
     private String tableName;
     private String tableInformation;
     private Short statusId;
     private Timestamp createdDate;
 
+    @Id
+    @Column(name = "TableName", nullable = false, length = 64)
     public String getTableName() {
         return tableName;
     }
@@ -16,6 +21,8 @@ public class DatamodelDatatablesEntity {
         this.tableName = tableName;
     }
 
+    @Basic
+    @Column(name = "TableInformation", nullable = true, length = 249)
     public String getTableInformation() {
         return tableInformation;
     }
@@ -24,6 +31,8 @@ public class DatamodelDatatablesEntity {
         this.tableInformation = tableInformation;
     }
 
+    @Basic
+    @Column(name = "StatusID", nullable = true)
     public Short getStatusId() {
         return statusId;
     }
@@ -32,6 +41,8 @@ public class DatamodelDatatablesEntity {
         this.statusId = statusId;
     }
 
+    @Basic
+    @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
     }

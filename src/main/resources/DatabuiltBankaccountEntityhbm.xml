@@ -4,19 +4,19 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.datasynthesis.hibernatemappings.DatabuiltPhonenumbersEntity" table="databuilt_phonenumbers"
+    <class name="com.datasynthesis.hibernatemappings.DatabuiltBankaccountEntity" table="databuilt_bankaccount"
            schema="datasynthesis">
-        <id name="dataBuiltPhoneNumbersId">
-            <column name="DataBuiltPhoneNumbersID" sql-type="bigint"/>
+        <id name="dataBuiltBankAccountsId">
+            <column name="DataBuiltBankAccountsID" sql-type="bigint"/>
         </id>
-        <property name="areaCode">
-            <column name="AreaCode" sql-type="varchar(3)" length="3" not-null="true"/>
+        <property name="bankAccountNumber">
+            <column name="BankAccountNumber" sql-type="varchar(12)" length="12" not-null="true"/>
         </property>
-        <property name="phoneNumber">
-            <column name="PhoneNumber" sql-type="varchar(8)" length="8" not-null="true"/>
+        <property name="bankAccountName">
+            <column name="BankAccountName" sql-type="varchar(75)" length="75" not-null="true"/>
         </property>
-        <property name="completePhoneNumber">
-            <column name="CompletePhoneNumber" sql-type="varchar(14)" length="14" not-null="true"/>
+        <property name="bankRoutingId">
+            <column name="BankRoutingID" sql-type="varchar(9)" length="9" not-null="true"/>
         </property>
         <property name="createdDate">
             <column name="CreatedDate" sql-type="timestamp" not-null="true"/>
