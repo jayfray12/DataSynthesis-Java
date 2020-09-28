@@ -1,11 +1,19 @@
 package com.redhat.idaas.datasynthesis.models;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "dataexisting_ababanking", schema = "datasynthesis", catalog = "")
-public class DataexistingAbabankingEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataexistingAbaBankingEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long abaBankingId;
     private String routingNumber;
     private String telegraphicName;
@@ -16,6 +24,7 @@ public class DataexistingAbabankingEntity extends io.quarkus.hibernate.orm.panac
     private Timestamp createdDate;
     private String createdUser;
     private String registeredApp;
+    private RefdataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "ABABankingID", nullable = false)
@@ -122,7 +131,7 @@ public class DataexistingAbabankingEntity extends io.quarkus.hibernate.orm.panac
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DataexistingAbabankingEntity that = (DataexistingAbabankingEntity) o;
+        DataexistingAbaBankingEntity that = (DataexistingAbaBankingEntity) o;
 
         if (abaBankingId != that.abaBankingId) return false;
         if (routingNumber != null ? !routingNumber.equals(that.routingNumber) : that.routingNumber != null)
@@ -135,6 +144,7 @@ public class DataexistingAbabankingEntity extends io.quarkus.hibernate.orm.panac
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
+        if (refdataStatus != null ? !refdataStatus.equals(that.refdataStatus) : that.refdataStatus != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
 
@@ -152,7 +162,22 @@ public class DataexistingAbabankingEntity extends io.quarkus.hibernate.orm.panac
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
+        result = 31 * result + (refdataStatus != null ? refdataStatus.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    public RefdataStatusEntity getRefdataStatus() {
+        return refdataStatus;
+    }
+
+    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+        this.refdataStatus = refdataStatus;
+    }
+
+    public static List<DataexistingAbaBankingEntity> findByStatusId(Short statusId) {
+        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
     }
 }

@@ -11,6 +11,20 @@ public class RefdataStatusEntity extends io.quarkus.hibernate.orm.panache.Panach
     private Timestamp createdDate;
     private String createdUser;
 
+    public RefdataStatusEntity(short statusId, String statusDescription, Timestamp createdDate, String createdUser) {
+        this.statusId = statusId;
+        this.statusDescription = statusDescription;
+        this.createdDate = createdDate;
+        this.createdUser = createdUser;
+    }
+
+    public RefdataStatusEntity(short statusId) {
+        this.statusId = statusId;
+    }
+
+    public RefdataStatusEntity() {
+    }
+
     @Id
     @Column(name = "StatusID", nullable = false)
     public short getStatusId() {

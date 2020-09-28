@@ -1,17 +1,26 @@
 package com.redhat.idaas.datasynthesis.models;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "dataexisting_namefirst", schema = "datasynthesis", catalog = "")
-public class DataexistingNamefirstEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataexistingNameFirstEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long firstNameId;
     private String firstName;
     private String gender;
     private Timestamp createdDate;
     private String createdUser;
     private String registeredApp;
+    private RefdataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "FirstNameID", nullable = false)
@@ -78,13 +87,14 @@ public class DataexistingNamefirstEntity extends io.quarkus.hibernate.orm.panach
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DataexistingNamefirstEntity that = (DataexistingNamefirstEntity) o;
+        DataexistingNameFirstEntity that = (DataexistingNameFirstEntity) o;
 
         if (firstNameId != that.firstNameId) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (createdUser != null ? !createdUser.equals(that.createdUser) : that.createdUser != null) return false;
+        if (refdataStatus != null ? !refdataStatus.equals(that.refdataStatus) : that.refdataStatus != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
 
@@ -99,6 +109,21 @@ public class DataexistingNamefirstEntity extends io.quarkus.hibernate.orm.panach
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (createdUser != null ? createdUser.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
+        result = 31 * result + (refdataStatus != null ? refdataStatus.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    public RefdataStatusEntity getRefdataStatus() {
+        return refdataStatus;
+    }
+
+    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+        this.refdataStatus = refdataStatus;
+    }
+
+    public static List<DataexistingNameFirstEntity> findByStatusId(Short statusId) {
+        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
     }
 }

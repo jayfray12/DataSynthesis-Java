@@ -1,7 +1,15 @@
 package com.redhat.idaas.datasynthesis.models;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "databuilt_corporations", schema = "datasynthesis", catalog = "")
@@ -14,6 +22,7 @@ public class DatabuiltCorporationsEntity extends io.quarkus.hibernate.orm.panach
     private String zipCode;
     private Timestamp createdDate;
     private String registeredApp;
+    private RefdataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "DataBuiltCorporationID", nullable = false)
@@ -112,6 +121,7 @@ public class DatabuiltCorporationsEntity extends io.quarkus.hibernate.orm.panach
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
+        if (refdataStatus != null ? !refdataStatus.equals(that.refdataStatus) : that.refdataStatus != null) return false;
 
         return true;
     }
@@ -126,6 +136,21 @@ public class DatabuiltCorporationsEntity extends io.quarkus.hibernate.orm.panach
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
+        result = 31 * result + (refdataStatus != null ? refdataStatus.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    public RefdataStatusEntity getRefdataStatus() {
+        return refdataStatus;
+    }
+
+    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+        this.refdataStatus = refdataStatus;
+    }
+
+    public static List<DatabuiltCorporationsEntity> findByStatusId(Short statusId) {
+        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
     }
 }

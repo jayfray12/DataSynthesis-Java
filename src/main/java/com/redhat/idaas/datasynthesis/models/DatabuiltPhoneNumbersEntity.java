@@ -1,17 +1,26 @@
 package com.redhat.idaas.datasynthesis.models;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "databuilt_phonenumbers", schema = "datasynthesis", catalog = "")
-public class DatabuiltPhonenumbersEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DatabuiltPhoneNumbersEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long dataBuiltPhoneNumbersId;
     private String areaCode;
     private String phoneNumber;
     private String completePhoneNumber;
     private Timestamp createdDate;
     private String registeredApp;
+    private RefdataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "DataBuiltPhoneNumbersID", nullable = false)
@@ -78,7 +87,7 @@ public class DatabuiltPhonenumbersEntity extends io.quarkus.hibernate.orm.panach
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DatabuiltPhonenumbersEntity that = (DatabuiltPhonenumbersEntity) o;
+        DatabuiltPhoneNumbersEntity that = (DatabuiltPhoneNumbersEntity) o;
 
         if (dataBuiltPhoneNumbersId != that.dataBuiltPhoneNumbersId) return false;
         if (areaCode != null ? !areaCode.equals(that.areaCode) : that.areaCode != null) return false;
@@ -88,6 +97,7 @@ public class DatabuiltPhonenumbersEntity extends io.quarkus.hibernate.orm.panach
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (registeredApp != null ? !registeredApp.equals(that.registeredApp) : that.registeredApp != null)
             return false;
+        if (refdataStatus != null ? !refdataStatus.equals(that.refdataStatus) : that.refdataStatus != null) return false;
 
         return true;
     }
@@ -100,6 +110,21 @@ public class DatabuiltPhonenumbersEntity extends io.quarkus.hibernate.orm.panach
         result = 31 * result + (completePhoneNumber != null ? completePhoneNumber.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (registeredApp != null ? registeredApp.hashCode() : 0);
+        result = 31 * result + (refdataStatus != null ? refdataStatus.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    public RefdataStatusEntity getRefdataStatus() {
+        return refdataStatus;
+    }
+
+    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+        this.refdataStatus = refdataStatus;
+    }
+
+    public static List<DatabuiltPhoneNumbersEntity> findByStatusId(Short statusId) {
+        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
     }
 }

@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.redhat.idaas.datasynthesis.models.PlatformDatagenconfigEntity;
+import com.redhat.idaas.datasynthesis.models.PlatformDataGenConfigEntity;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
@@ -19,13 +19,13 @@ public class PlatformDataGenConfigResource {
 
     @GET
     @Path("all")
-    public List<PlatformDatagenconfigEntity> get() {
-        return PlatformDatagenconfigEntity.listAll();
+    public List<PlatformDataGenConfigEntity> get() {
+        return PlatformDataGenConfigEntity.listAll();
     }
 
     @GET
     @Path("{status}")
-    public List<PlatformDatagenconfigEntity> getByStatus(@PathParam String status) {
-        return PlatformDatagenconfigEntity.findByStatusId(status);
+    public List<PlatformDataGenConfigEntity> getByStatus(@PathParam Short status) {
+        return PlatformDataGenConfigEntity.findByStatusId(status);
     }
 }

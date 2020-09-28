@@ -2,16 +2,18 @@ package com.redhat.idaas.datasynthesis.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "auditing_datarequest", schema = "datasynthesis", catalog = "")
-public class AuditingDatarequestEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class AuditingDataRequestEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long dataRequestId;
     private Timestamp dataRequestDate;
     private String createdByUser;
     private Long organizaton;
     private Long application;
     private Timestamp createdDate;
+    private RefdataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "DataRequestID", nullable = false)
@@ -78,7 +80,7 @@ public class AuditingDatarequestEntity extends io.quarkus.hibernate.orm.panache.
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AuditingDatarequestEntity that = (AuditingDatarequestEntity) o;
+        AuditingDataRequestEntity that = (AuditingDataRequestEntity) o;
 
         if (dataRequestId != that.dataRequestId) return false;
         if (dataRequestDate != null ? !dataRequestDate.equals(that.dataRequestDate) : that.dataRequestDate != null)
@@ -88,6 +90,7 @@ public class AuditingDatarequestEntity extends io.quarkus.hibernate.orm.panache.
         if (organizaton != null ? !organizaton.equals(that.organizaton) : that.organizaton != null) return false;
         if (application != null ? !application.equals(that.application) : that.application != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
+        if (refdataStatus != null ? !refdataStatus.equals(that.refdataStatus) : that.refdataStatus != null) return false;
 
         return true;
     }
@@ -100,6 +103,21 @@ public class AuditingDatarequestEntity extends io.quarkus.hibernate.orm.panache.
         result = 31 * result + (organizaton != null ? organizaton.hashCode() : 0);
         result = 31 * result + (application != null ? application.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
+        result = 31 * result + (refdataStatus != null ? refdataStatus.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    public RefdataStatusEntity getRefdataStatus() {
+        return refdataStatus;
+    }
+
+    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+        this.refdataStatus = refdataStatus;
+    }
+
+    public static List<AuditingDataRequestEntity> findByStatusId(Short statusId) {
+        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
     }
 }
