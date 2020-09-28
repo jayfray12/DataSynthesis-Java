@@ -13,7 +13,7 @@ public class AuditingDataRequestEntity extends io.quarkus.hibernate.orm.panache.
     private Long organizaton;
     private Long application;
     private Timestamp createdDate;
-    private RefdataStatusEntity refdataStatus;
+    private RefDataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "DataRequestID", nullable = false)
@@ -109,15 +109,15 @@ public class AuditingDataRequestEntity extends io.quarkus.hibernate.orm.panache.
 
     @ManyToOne
     @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefdataStatusEntity getRefdataStatus() {
+    public RefDataStatusEntity getRefdataStatus() {
         return refdataStatus;
     }
 
-    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+    public void setRefdataStatus(RefDataStatusEntity refdataStatus) {
         this.refdataStatus = refdataStatus;
     }
 
     public static List<AuditingDataRequestEntity> findByStatusId(Short statusId) {
-        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
+        return find("refdataStatus", new RefDataStatusEntity(statusId)).list();
     }
 }

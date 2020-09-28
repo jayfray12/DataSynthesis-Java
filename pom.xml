@@ -57,10 +57,9 @@
             <artifactId>quarkus-jdbc-mysql</artifactId>
         </dependency>
 		<dependency>
-			<groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>3.10.1</version>
-        </dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-liquibase</artifactId>
+          </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -125,7 +124,7 @@
 				   <releaseProfiles>releases</releaseProfiles>
 				</configuration>
              </plugin>
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.10.1</version>
@@ -134,7 +133,7 @@
                     <url>jdbc:mysql://localhost:3306/datasynthesis</url>  
                     <username>root</username>  
                     <password>letmein</password>
-                    <outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
+                    <outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.yaml</outputChangeLogFile>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -168,7 +167,7 @@
                         <version>5.2.7.RELEASE</version>
                     </dependency>
                 </dependencies>
-            </plugin> -->
+            </plugin>
 		</plugins>
     </build>
 

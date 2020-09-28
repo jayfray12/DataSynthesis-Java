@@ -12,7 +12,7 @@ import com.redhat.idaas.datasynthesis.models.PlatformDataGenConfigEntity;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-@Path("/api/v1/platformdatagenconfig")
+@Path("/platformdatagenconfig")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PlatformDataGenConfigResource {

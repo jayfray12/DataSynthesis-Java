@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: letmein
       MYSQL_DATABASE: datasynthesis
-    volumes:
-      - /home/jfroehli/AppDev/iDAAS/DataSynthesis-Java/MySQL-DDL/datasynthesis-2020-0924.sql:/docker-entrypoint-initdb.d/001.sql:Z,delegated
-      - /home/jfroehli/AppDev/iDAAS/DataSynthesis-Java/MySQL-DumpFiles/complete-datasynthesis-08222020.sql:/docker-entrypoint-initdb.d/002.sql:Z,delegated
+    # volumes:
+    #   - MySQL-DDL/datasynthesis-2020-0924.sql:/docker-entrypoint-initdb.d/001.sql:Z,delegated
+    #   - MySQL-DumpFiles/complete-datasynthesis-08222020.sql:/docker-entrypoint-initdb.d/002.sql:Z,delegated
 

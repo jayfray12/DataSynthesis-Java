@@ -19,8 +19,8 @@ public class AuditingDataRequestDetailEntity extends io.quarkus.hibernate.orm.pa
     private String recordFormatDetails;
     private Timestamp createdDate;
     private AuditingDataRequestEntity auditingDataRequest;
-    private PlatformDataattributesEntity platformDataAttributes;
-    private RefdataStatusEntity refdataStatus;
+    private PlatformDataAttributesEntity platformDataAttributes;
+    private RefDataStatusEntity refdataStatus;
 
     @Id
     @Column(name = "DataRequestDetailID", nullable = false)
@@ -95,11 +95,11 @@ public class AuditingDataRequestDetailEntity extends io.quarkus.hibernate.orm.pa
 
     @ManyToOne
     @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefdataStatusEntity getRefdataStatus() {
+    public RefDataStatusEntity getRefdataStatus() {
         return refdataStatus;
     }
 
-    public void setRefdataStatus(RefdataStatusEntity refdataStatus) {
+    public void setRefdataStatus(RefDataStatusEntity refdataStatus) {
         this.refdataStatus = refdataStatus;
     }
 
@@ -115,15 +115,15 @@ public class AuditingDataRequestDetailEntity extends io.quarkus.hibernate.orm.pa
 
     @ManyToOne
     @JoinColumn(name = "DataAttributeID", referencedColumnName = "PlatformDataAttributesID")
-    public PlatformDataattributesEntity getPlatformDataAttributes() {
+    public PlatformDataAttributesEntity getPlatformDataAttributes() {
         return platformDataAttributes;
     }
 
-    public void setPlatformDataAttributes(PlatformDataattributesEntity platformDataAttributes) {
+    public void setPlatformDataAttributes(PlatformDataAttributesEntity platformDataAttributes) {
         this.platformDataAttributes = platformDataAttributes;
     }
 
     public static List<AuditingDataRequestDetailEntity> findByStatusId(Short statusId) {
-        return find("refdataStatus", new RefdataStatusEntity(statusId)).list();
+        return find("refdataStatus", new RefDataStatusEntity(statusId)).list();
     }
 }
