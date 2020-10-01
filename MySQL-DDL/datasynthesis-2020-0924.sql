@@ -723,6 +723,16 @@ create index IX_RefDataAppSettings
 create index IX_RefData_Organization
 	on refdata_organization (OrganizationGUID, OrganizationName, Address, City, StateID, ZipCode, CreatedDate, StatusID, CreatedUser, OrganizationInternalCode, OrganizationInternalID);
 
+create definer = root@`%` trigger refdata_organization_uuid
+	before insert
+	on refdata_organization
+	for each row
+	BEGIN
+  IF new.OrganizationGUID IS NULL THEN
+    SET new.OrganizationGUID = UUID();
+  END IF;
+END;
+
 create index IX_USStates
 	on refdata_usstates (StateID, StateDescription, Lattitude, Longitude, CreatedDate, StatusID, CreatedUser);
 
@@ -901,6 +911,15 @@ create index IX_PlatformRulesetsDefinitions
 create index IX_RefData_Application
 	on refdata_application (AppGUID, ApplicationCustomCode, ApplicationDesc, CreatedUser, CreatedDate, StatusID, VendorID);
 
+create definer = root@`%` trigger refdata_application_uuid
+	before insert
+	on refdata_application
+	for each row
+	BEGIN
+  IF new.AppGUID IS NULL THEN
+    SET new.AppGUID = UUID();
+  END IF;
+END;
 
 create table if not exists refdata_codesetvalues
 (
@@ -926,6 +945,15 @@ create index IDX_refdata_codesetvalues
 create index IX_RefData_Vendors
 	on refdata_vendor (VendorID, VendorName, StatusID, VendorGUID, CreatedDate, CreatedUser);
 
+create definer = root@`%` trigger refdata_vendors_uuid
+	before insert
+	on refdata_vendor
+	for each row
+	BEGIN
+  IF new.VendorGUID IS NULL THEN
+    SET new.VendorGUID = UUID();
+  END IF;
+END;
 
 create table if not exists terms_codesetstoapplication
 (
@@ -956,4 +984,3 @@ create table if not exists terms_codesetstoapplication
 
 create index IX_Terms_CodeSetsToApplication
 	on terms_codesetstoapplication (CodeSetToApplicationID, CodeSetsID, Domain, IndustryStd, SpecificDetails, CreatedDate, CreatedUser, MessageTrigger, OrganizationID, ApplicationID, StatusID, VendorID);
-
