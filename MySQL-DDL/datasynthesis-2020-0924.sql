@@ -984,3 +984,4 @@ create table if not exists terms_codesetstoapplication
 
 create index IX_Terms_CodeSetsToApplication
 	on terms_codesetstoapplication (CodeSetToApplicationID, CodeSetsID, Domain, IndustryStd, SpecificDetails, CreatedDate, CreatedUser, MessageTrigger, OrganizationID, ApplicationID, StatusID, VendorID);
+
