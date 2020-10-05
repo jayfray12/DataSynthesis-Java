@@ -1,0 +1,9 @@
+kafkaDir='/Users/alscott/RedHatTech/kafka_2.12-2.5.0.redhat-00003'
+cd $ kafkaDir
+
+## Operational Topics for Platform
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic datasynth_opsmgmt &
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic datasynth_databuilder &
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic datasynth_datageneration &
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic datasynth_datagen &
+
