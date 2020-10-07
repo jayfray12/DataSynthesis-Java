@@ -1,4 +1,4 @@
-package com.redhat.idaas.datasynthesis.api;
+package com.redhat.idaas.datasynthesis.apis;
 
 import java.util.List;
 
