@@ -2,8 +2,12 @@ package com.redhat.idaas.datasynthesis.dtos;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class PhoneNumbers {
+public class PhoneNumber {
     public String phoneNumber;
+
+    public PhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     //Getters and Setters
     public String getPhoneNumber() {

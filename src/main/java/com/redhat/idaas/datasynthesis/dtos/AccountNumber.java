@@ -2,8 +2,12 @@ package com.redhat.idaas.datasynthesis.dtos;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class AccountNumbers {
+public class AccountNumber {
     public String AccountNumber;
+
+    public AccountNumber(String accountNumber) {
+        AccountNumber = accountNumber;
+    }
 
     //Getter and Setters
     public String getAccountNumber() {

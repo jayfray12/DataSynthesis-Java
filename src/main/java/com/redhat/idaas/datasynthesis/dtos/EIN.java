@@ -5,6 +5,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 public class EIN {
     public String EinNumber;
 
+    public EIN(String einNumber) {
+        EinNumber = einNumber;
+    }
+
     //Getters and Setters
     public String getEinNumber() {
         return EinNumber;
