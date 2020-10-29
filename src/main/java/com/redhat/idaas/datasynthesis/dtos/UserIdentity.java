@@ -3,39 +3,14 @@ package com.redhat.idaas.datasynthesis.dtos;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 public class UserIdentity {
-    public String UserIdentity;
-    public String DomainValue;
-    public String AdditionalDetail;
+    public String userIdentity;
+    public String domainValue;
+    public String additionalDetail;
 
     public UserIdentity(String userIdentity, String domainValue, String additionalDetail) {
-        UserIdentity = userIdentity;
-        DomainValue = domainValue;
-        AdditionalDetail = additionalDetail;
-    }
-
-    //Getters and Setters
-    public String getUserIdentity() {
-        return UserIdentity;
-    }
-
-    public void setUserIdentity(String userIdentity) {
-        UserIdentity = userIdentity;
-    }
-
-    public String getDomainValue() {
-        return DomainValue;
-    }
-
-    public void setDomainValue(String domainValue) {
-        DomainValue = domainValue;
-    }
-
-    public String getAdditionalDetail() {
-        return AdditionalDetail;
-    }
-
-    public void setAdditionalDetail(String additionalDetail) {
-        AdditionalDetail = additionalDetail;
+        this.userIdentity = userIdentity;
+        this.domainValue = domainValue;
+        this.additionalDetail = additionalDetail;
     }
 
     //toString

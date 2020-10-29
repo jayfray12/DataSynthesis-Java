@@ -3,19 +3,10 @@ package com.redhat.idaas.datasynthesis.dtos;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 public class AccountNumber {
-    public String AccountNumber;
+    public String accountNumber;
 
     public AccountNumber(String accountNumber) {
-        AccountNumber = accountNumber;
-    }
-
-    //Getter and Setters
-    public String getAccountNumber() {
-        return AccountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        AccountNumber = accountNumber;
+        this.accountNumber = accountNumber;
     }
 
     //toString

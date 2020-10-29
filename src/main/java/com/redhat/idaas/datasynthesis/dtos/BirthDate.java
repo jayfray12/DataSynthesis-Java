@@ -4,41 +4,16 @@ import java.util.Date;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 public class BirthDate {
-    public String DateOfBirth;
-    public Date DateOfBirthDate;
-    public int Age;
+    public String dateOfBirth;
+    public Date dateOfBirthDate;
+    public int age;
 
     public BirthDate(String dateOfBirth, Date dateOfBirthDate, int age) {
-        DateOfBirth = dateOfBirth;
-        DateOfBirthDate = dateOfBirthDate;
-        Age = age;
+        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirthDate = dateOfBirthDate;
+        this.age = age;
     }
     
-    //Getters and Setters
-    public String getDateOfBirth() {
-        return DateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        DateOfBirth = dateOfBirth;
-    }
-
-    public Date getDateOfBirthDate() {
-        return DateOfBirthDate;
-    }
-
-    public void setDateOfBirthDate(Date dateOfBirthDate) {
-        DateOfBirthDate = dateOfBirthDate;
-    }
-
-    public int getAge() {
-        return Age;
-    }
-
-    public void setAge(int age) {
-        Age = age;
-    }
-
     //toString
     public String toString()
     {
