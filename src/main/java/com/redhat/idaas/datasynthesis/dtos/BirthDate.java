@@ -3,10 +3,17 @@ package com.redhat.idaas.datasynthesis.dtos;
 import java.util.Date;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class BirthDates {
+public class BirthDate {
     public String DateOfBirth;
     public Date DateOfBirthDate;
     public int Age;
+
+    public BirthDate(String dateOfBirth, Date dateOfBirthDate, int age) {
+        DateOfBirth = dateOfBirth;
+        DateOfBirthDate = dateOfBirthDate;
+        Age = age;
+    }
+    
     //Getters and Setters
     public String getDateOfBirth() {
         return DateOfBirth;

@@ -2,10 +2,16 @@ package com.redhat.idaas.datasynthesis.dtos;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class UserIdentities {
+public class UserIdentity {
     public String UserIdentity;
     public String DomainValue;
     public String AdditionalDetail;
+
+    public UserIdentity(String userIdentity, String domainValue, String additionalDetail) {
+        UserIdentity = userIdentity;
+        DomainValue = domainValue;
+        AdditionalDetail = additionalDetail;
+    }
 
     //Getters and Setters
     public String getUserIdentity() {

@@ -2,9 +2,13 @@ package com.redhat.idaas.datasynthesis.dtos;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class BankAccounts {
+public class BankAccount {
 
     public String BankAccount;
+
+    public BankAccount(String bankAccount) {
+        BankAccount = bankAccount;
+    }
 
     //Getters and Setters
     public String getBankAccount() {

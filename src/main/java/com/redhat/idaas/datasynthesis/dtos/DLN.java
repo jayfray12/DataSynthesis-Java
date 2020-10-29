@@ -7,6 +7,12 @@ public class DLN {
     public String DLNState;
     public String CompleteDLN;
 
+    public DLN(String dLNNumber, String dLNState, String completeDLN) {
+        DLNNumber = dLNNumber;
+        DLNState = dLNState;
+        CompleteDLN = completeDLN;
+    }
+
     //Getters and Setters
     public String getDLNNumber() {
         return DLNNumber;
